@@ -1,8 +1,11 @@
 # Arquitectura de MindMup 2 Conversor
 
+[Español](arquitectura-es.md) | [English](arquitectura-en.md)
+
+
 MindMup 2 Conversor convierte archivos `.mup` compatibles con `formatVersion: 3` en JSON-CMJN normalizado de 10 colecciones y en HTML autocontenido. La compatibilidad se decide por el valor interno `formatVersion`, no por la versión comercial de MindMup. El conversor solo lee el archivo y genera una copia JSON y HTML; no abre, edita ni guarda mapas en MindMup.
 
-La misma base de código se usa en tres formas: la variante pública sin inicio de sesión, la variante con inicio de sesión y R2, y el conversor local. Esta página describe los componentes, los flujos, las rutas y las decisiones que explican el comportamiento observable. Las medidas de protección se detallan en [Seguridad](seguridad.md).
+La misma base de código se usa en tres formas: la variante pública sin inicio de sesión, la variante con inicio de sesión y R2, y el conversor local. Esta página describe los componentes, los flujos, las rutas y las decisiones que explican el comportamiento observable. Las medidas de protección se detallan en [Seguridad](seguridad-es.md).
 
 ## Compatibilidad y versiones
 
@@ -17,7 +20,7 @@ La compatibilidad técnica no depende del nombre comercial de la aplicación. De
 
 Un archivo exportado desde MindMup 2 solo se procesa si declara `formatVersion: 3`. El conversor no deduce la versión comercial ni la convierte: inspecciona el valor interno y, si no es 3, detiene la conversión con un error. Lo mismo se aplica a un archivo exportado desde MindMup 3.
 
-La documentación oficial de MindMup no documenta el valor interno `formatVersion`. Por eso no se puede afirmar que todos los archivos de MindMup 2 usen `formatVersion: 3`, ni que todos los de MindMup 3 usen otro valor. La comprobación de la capa 1 y el fixture `synthetic-v2.mup` acreditan el rechazo de 2, no una compatibilidad universal con todos los archivos de MindMup 2. Consulta [Pruebas](pruebas.md) para el alcance exacto de la suite.
+La documentación oficial de MindMup no documenta el valor interno `formatVersion`. Por eso no se puede afirmar que todos los archivos de MindMup 2 usen `formatVersion: 3`, ni que todos los de MindMup 3 usen otro valor. La comprobación de la capa 1 y el fixture `synthetic-v2.mup` acreditan el rechazo de 2, no una compatibilidad universal con todos los archivos de MindMup 2. Consulta [Pruebas](pruebas-es.md) para el alcance exacto de la suite.
 
 `v7` es la versión del proceso de conversión, no la versión de MindMup ni la del formato `.mup`. La versión del paquete (`1.0.0`) identifica el repositorio y tampoco es la versión del formato.
 
@@ -295,11 +298,11 @@ La distribución pública no incluye código de campaña ni `staging/`. Solo exi
 
 ## Documentación relacionada
 
-- [Configuración](configuracion.md)
-- [Seguridad](seguridad.md)
-- [Pruebas](pruebas.md)
-- [Instalación pública](instalacion-publica.md)
-- [Instalación con inicio de sesión y R2](instalacion-login-r2.md)
-- [Conversor local](conversor-local.md)
+- [Configuración](configuracion-es.md)
+- [Seguridad](seguridad-es.md)
+- [Pruebas](pruebas-es.md)
+- [Instalación pública](instalacion-publica-es.md)
+- [Instalación con inicio de sesión y R2](instalacion-login-r2-es.md)
+- [Conversor local](conversor-local-es.md)
 - [README del proyecto](../README.md)
-- [Licencias de terceros](../THIRD_PARTY_LICENSES.md)
+- [Licencias de terceros](../THIRD_PARTY_LICENSES-es.md)

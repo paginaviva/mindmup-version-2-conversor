@@ -1,5 +1,8 @@
 # Instalación pública de MindMup 2 Conversor
 
+[Español](instalacion-publica-es.md) | [English](instalacion-publica-en.md)
+
+
 Guía para desplegar la variante pública de MindMup 2 Conversor en una cuenta de Cloudflare propia. La variante pública no tiene inicio de sesión ni catálogo: recibe un archivo `.mup`, genera un HTML autocontenido y lo ofrece para previsualizar y descargar en ZIP. El JSON se genera internamente para construir el HTML, pero no se expone al usuario.
 
 Esta variante es distinta de la instalación con inicio de sesión y R2 y del conversor local: no incluye autenticación ni catálogo, expone solo HTML y ZIP, y aplica una retención de 24 horas. El conversor local no usa Cloudflare y guarda los archivos en el disco del usuario.
@@ -420,7 +423,7 @@ Los detalles técnicos se registran en los registros estructurados del Worker o 
 - No hay catálogo, campaña ni `staging/` en esta variante. No busques datos publicados en `output/`: las conversiones anónimas usan `temp/`.
 - Los límites se aplican por dirección de red. Varios usuarios detrás de la misma red pueden compartir cuota; es el comportamiento esperado.
 - Turnstile es opcional y complementa los límites, no los sustituye.
-- Conserva `LICENSE` y `THIRD_PARTY_LICENSES.md` en la distribución.
+- Conserva `LICENSE` y `THIRD_PARTY_LICENSES-es.md` en la distribución.
 
 ## Lista de comprobación
 

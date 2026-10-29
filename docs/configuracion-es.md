@@ -1,10 +1,13 @@
 # Configuración de MindMup 2 Conversor
 
+[Español](configuracion-es.md) | [English](configuracion-en.md)
+
+
 MindMup 2 Conversor guarda la configuración operativa en dos documentos JSON dentro del almacenamiento clave-valor de Cloudflare. La carga no sustituye las claves ausentes por valores por defecto: si falta un binding, una clave o el tipo no coincide, se produce un error explícito que nombra el elemento que falla.
 
 La validación y la carga son manuales. El repositorio no incluye integración continua ni GitHub Actions.
 
-Para el despliegue completo, consulta [instalacion-publica.md](instalacion-publica.md) y [instalacion-login-r2.md](instalacion-login-r2.md).
+Para el despliegue completo, consulta [instalacion-publica-es.md](instalacion-publica-es.md) y [instalacion-login-r2-es.md](instalacion-login-r2-es.md).
 
 ## Compatibilidad y versiones
 

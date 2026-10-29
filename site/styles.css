@@ -275,6 +275,73 @@ main:focus {
   color: var(--color-accent-hover);
 }
 
+/* Selector de idioma */
+
+.header-utility {
+  background-color: var(--color-surface-muted);
+}
+
+.header-utility__inner {
+  display: flex;
+  justify-content: flex-end;
+  padding-block: 0.35rem;
+}
+
+.language-switcher {
+  display: flex;
+  flex: none;
+  align-items: center;
+  gap: 0.15rem;
+  padding: 0.15rem;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background-color: var(--color-surface);
+}
+
+.language-switcher__option {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.38rem;
+  min-height: 2.5rem;
+  padding: 0.3rem 0.62rem;
+  border-radius: 999px;
+  color: var(--color-muted);
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.language-switcher__option:hover {
+  background-color: var(--color-accent-soft);
+  color: var(--color-accent-hover);
+}
+
+.language-switcher__option[aria-current="true"] {
+  background-color: var(--color-accent-soft);
+  color: var(--color-accent-hover);
+  box-shadow: inset 0 0 0 1px rgba(11, 92, 173, 0.18);
+}
+
+.language-switcher__flag {
+  display: inline-flex;
+  flex: none;
+  width: 1.3rem;
+  height: 0.87rem;
+  overflow: hidden;
+  border-radius: 2px;
+  box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.16);
+}
+
+.language-switcher__flag svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 @media (min-width: 64em) {
   .site-header__inner {
     padding-block: 1rem;
@@ -790,6 +857,10 @@ main:focus {
   content: "En la vista HTML: ";
   color: var(--color-text);
   font-weight: 700;
+}
+
+html[lang="en"] .process-note::before {
+  content: "In the HTML view: ";
 }
 
 .tech-block {

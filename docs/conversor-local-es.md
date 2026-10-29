@@ -1,5 +1,8 @@
 # Conversor local — MindMup 2 Conversor
 
+[Español](conversor-local-es.md) | [English](conversor-local-en.md)
+
+
 El conversor local de MindMup 2 Conversor convierte archivos `.mup` compatibles con `formatVersion: 3` en JSON-CMJN y, si se indica, en un HTML autocontenido. Funciona con Node.js y el sistema de archivos: no usa Cloudflare, Wrangler ni dependencias npm. Los resultados se guardan en el disco del usuario.
 
 ## Compatibilidad de los archivos
@@ -63,7 +66,7 @@ La prioridad se lee de izquierda a derecha: la primera opción disponible gana.
 }
 ```
 
-Puedes usar el mismo `config.local.json` que contiene las claves de `config.example.json`: los scripts locales solo leen `local`. La configuración de las variantes web se explica en [configuracion.md](configuracion.md).
+Puedes usar el mismo `config.local.json` que contiene las claves de `config.example.json`: los scripts locales solo leen `local`. La configuración de las variantes web se explica en [configuracion-es.md](configuracion-es.md).
 
 - Si el archivo no existe, se ignora. El error aparece si faltan las carpetas de entrada o de salida.
 - Si el archivo existe y no contiene JSON válido, el proceso termina con un error.
@@ -247,7 +250,7 @@ examples/salida-json/mapa-completo.json
 examples/salida-json/mapa-con-adjunto.json
 ```
 
-Los datos de los ejemplos son sintéticos. Consulta [examples/README.md](../examples/README.md) para ver el alcance de cada archivo.
+Los datos de los ejemplos son sintéticos. Consulta [examples/README-es.md](../examples/README-es.md) para ver el alcance de cada archivo.
 
 ## 7. Limitaciones verificadas y problemas habituales
 

@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MindMup 2 Conversor — Recover and preserve historical mind maps</title>
+  <meta name="description" content="Convert .mup files with formatVersion 3 into normalized JSON-CMJN and self-contained HTML to recover, browse, and preserve historical MindMup 2 mind maps.">
+  <meta name="author" content="PáginaVIVA">
+  <meta name="robots" content="index,follow">
+  <meta name="theme-color" content="#0b5cad">
+  <meta name="color-scheme" content="light">
+  <meta name="referrer" content="no-referrer">
+  <link rel="canonical" href="https://pg-mindmup-v2-web.pages.dev/en/">
+  <link rel="alternate" hreflang="es" href="https://pg-mindmup-v2-web.pages.dev/">
+  <link rel="alternate" hreflang="en" href="https://pg-mindmup-v2-web.pages.dev/en/">
+  <link rel="alternate" hreflang="x-default" href="https://pg-mindmup-v2-web.pages.dev/">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='12'%20fill='%230b5cad'/%3E%3Cpath%20d='M18%2046V18h7l7%2011%207-11h7v28h-7V29l-7%2011-7-11v17z'%20fill='%23fff'/%3E%3C/svg%3E">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="en_GB">
+  <meta property="og:locale:alternate" content="es_ES">
+  <meta property="og:site_name" content="MindMup 2 Conversor">
+  <meta property="og:title" content="MindMup 2 Conversor — Recover and preserve historical mind maps">
+  <meta property="og:description" content="Convert .mup files with formatVersion 3 into normalized JSON-CMJN and self-contained HTML to recover, browse, and preserve historical MindMup 2 mind maps.">
+  <meta property="og:url" content="https://pg-mindmup-v2-web.pages.dev/en/">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="header-utility">
+      <div class="wrap header-utility__inner">
+        <nav class="language-switcher" aria-label="Language selector">
+          <a class="language-switcher__option" href="../" hreflang="es" lang="es" data-language-option="es">
+            <span class="language-switcher__flag" aria-hidden="true">
+              <svg viewBox="0 0 24 16" aria-hidden="true" focusable="false">
+                <rect width="24" height="16" fill="#c60b1e"></rect>
+                <rect y="4" width="24" height="8" fill="#ffc400"></rect>
+                <rect x="4.4" y="6.2" width="2.9" height="3.6" rx="0.4" fill="#c60b1e"></rect>
+                <rect x="5.3" y="7.2" width="1.1" height="1.6" fill="#ffc400"></rect>
+              </svg>
+            </span>
+            <span>Español</span>
+          </a>
+          <a class="language-switcher__option" href="./" hreflang="en" lang="en" data-language-option="en" aria-current="true">
+            <span class="language-switcher__flag" aria-hidden="true">
+              <svg viewBox="0 0 24 16" aria-hidden="true" focusable="false">
+                <rect width="24" height="16" fill="#012169"></rect>
+                <path d="M0 0 24 16M24 0 0 16" stroke="#ffffff" stroke-width="3.2"></path>
+                <path d="M0 0 24 16M24 0 0 16" stroke="#c8102e" stroke-width="1.4"></path>
+                <path d="M12 0v16M0 8h24" stroke="#ffffff" stroke-width="5.2"></path>
+                <path d="M12 0v16M0 8h24" stroke="#c8102e" stroke-width="3"></path>
+              </svg>
+            </span>
+            <span>English</span>
+          </a>
+        </nav>
+      </div>
+    </div>
+
+    <div class="wrap site-header__inner">
+      <a class="brand" href="#inicio" aria-label="MindMup 2 Conversor, go to top">
+        <span class="brand-mark" aria-hidden="true">M2</span>
+        <span class="brand-text">
+          <span>MindMup 2</span>
+          <span>Conversor</span>
+        </span>
+      </a>
+
+      <nav class="site-nav" aria-label="Main navigation">
+        <ul role="list">
+          <li><a href="#contexto">Context</a></li>
+          <li><a href="#problema">Problem</a></li>
+          <li><a href="#solucion">Solution</a></li>
+          <li><a href="#funcionamiento">How it works</a></li>
+          <li><a href="#variantes">Variants</a></li>
+          <li><a href="#tecnica">Technical details</a></li>
+          <li><a href="#documentacion">Resources</a></li>
+        </ul>
+      </nav>
+
+      <a class="header-action" href="https://pg-mindmup-v2-public.pages.dev">
+        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <rect x="3" y="4" width="18" height="14" rx="2"></rect>
+          <path d="M8 21h8"></path>
+          <path d="M12 18v3"></path>
+        </svg>
+        <span>Public converter</span>
+      </a>
+    </div>
+  </header>
+
+  <main id="contenido" tabindex="-1">
+    <section class="hero" id="inicio" aria-labelledby="hero-title">
+      <div class="wrap hero__grid">
+        <div class="hero__copy">
+          <p class="eyebrow">Historical mind map preservation</p>
+          <h1 id="hero-title">Recover, browse, and preserve your historical MindMup 2 mind maps.</h1>
+          <p class="hero__lead">MindMup 2 Conversor turns compatible <code>.mup</code> files into normalized JSON-CMJN and self-contained HTML. The aim is to recover the information from maps you no longer use every day, browse it comfortably, and preserve it outside the MindMup interface.</p>
+          <div class="hero__actions">
+            <a class="button" href="https://pg-mindmup-v2-public.pages.dev">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <rect x="3" y="4" width="18" height="14" rx="2"></rect>
+                <path d="M8 21h8"></path>
+                <path d="M12 18v3"></path>
+              </svg>
+              <span>Open the public converter</span>
+            </a>
+            <a class="button button--secondary" href="https://github.com/paginaviva/mindmup-version-2-conversor">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="m8 8-4 4 4 4"></path>
+                <path d="m16 8 4 4-4 4"></path>
+                <path d="m14 5-4 14"></path>
+              </svg>
+              <span>View the repository</span>
+            </a>
+          </div>
+          <p class="hero__note"><strong>Note:</strong> the application interface is in Spanish. This page describes the project in English.</p>
+          <p class="hero__note">The public variant requires no account and offers an HTML preview and ZIP download. The URL expires and the result is no longer available after 24 hours, so download the ZIP if you want to keep it. JSON download is available in the variant with login; the local converter writes the JSON to disk.</p>
+        </div>
+
+        <aside class="hero-card" aria-label="Conversion result summary">
+          <p class="hero-card__label">Conversion result</p>
+          <div class="hero-card__file">
+            <span class="file-badge">.mup</span>
+            <span>mapa.mup</span>
+          </div>
+          <dl class="hero-card__rows">
+            <div class="hero-card__row">
+              <dt>Data</dt>
+              <dd>JSON-CMJN<span>ten normalized collections</span></dd>
+            </div>
+            <div class="hero-card__row">
+              <dt>View</dt>
+              <dd>HTML<span>styles and scripts included</span></dd>
+            </div>
+            <div class="hero-card__row">
+              <dt>Download</dt>
+              <dd>ZIP or folder<span>depending on the variant</span></dd>
+            </div>
+          </dl>
+          <p class="hero-card__foot">Compatibility is determined by the file's <code>formatVersion</code>, not by the commercial version of MindMup.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section section--surface" id="contexto" aria-labelledby="contexto-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">Context</p>
+          <h2 id="contexto-title">What MindMup is and why its maps are worth preserving.</h2>
+          <p>MindMup is a web application for creating mind maps and organizing ideas through nodes and hierarchical relationships. Its official website also covers organization charts, fishbone diagrams, argument visualization, notes, attachments, publishing, and Google Drive storage. You can find out more about the product on <a href="https://www.mindmup.com/">the official MindMup website</a>.</p>
+        </div>
+
+        <div class="split">
+          <article class="panel panel--muted">
+            <p class="panel__label">MindMup 2 and MindMup 3</p>
+            <h3>A transition that preserves maps, teams, and settings.</h3>
+            <p>The official documentation announces that <a href="https://www.mindmup.com/help/news/mindmup-3-migration/">MindMup 3 gradually replaces MindMup 2</a> from 13 April. According to that same documentation, maps are migrated automatically, teams and members are preserved, and account settings and history remain. Some classic features change: Measures, Progress, and Storyboards are not carried over to MindMup 3, and Fishbone maps become read-only.</p>
+            <p>During the preview, existing maps appear in MindMup 3 as read-only; editing existing maps remains in MindMup 2 until the migration.</p>
+          </article>
+
+          <article class="panel panel--muted">
+            <p class="panel__label">Access and editing</p>
+            <h3>Reading is not the same as editing.</h3>
+            <p>From <time datetime="2026-06-01">1 June 2026</time>, <a href="https://www.mindmup.com/help/news/mindmup-google-drive-changes/">MindMup for Google Drive</a> becomes a paid product and requires a Personal subscription or higher. Free accounts can no longer create or edit maps with that application; existing maps remain accessible, but editing them requires a paid subscription. The official documentation recommended that anyone who did not plan to upgrade export and save important maps before that date.</p>
+            <p>The official documentation states that, from 6 October, the <a href="https://www.mindmup.com/help/news/editable-map-limit-changing/">Starter plan</a> includes up to 3 editable maps instead of 5. Maps over the limit become read-only and remain available to open and browse; existing maps are not deleted. The limit applies only to Starter accounts: Personal, Team, and Organization retain unlimited editable maps.</p>
+          </article>
+        </div>
+
+        <p class="callout">Reading, editing, importing, migrating, and exporting are different operations. A restriction on editing does not prevent you from browsing the map or keeping a copy of its information. This converter does not import maps into MindMup: it processes a <code>.mup</code> file that you have already exported.</p>
+      </div>
+    </section>
+
+    <section class="section" id="problema" aria-labelledby="problema-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">The problem</p>
+          <h2 id="problema-title">The map exists, but recovering its information is not always immediate.</h2>
+          <p>Maps accumulate years of notes, relationships, and decisions. When the version, plan, or access conditions change, keeping the file is not enough: you need to be able to read it, browse it, and preserve it independently of the original interface.</p>
+        </div>
+
+        <div class="split">
+          <article class="panel">
+            <p class="panel__label">Information that remains</p>
+            <h3>Years of work inside a file.</h3>
+            <p>Each node can contain notes, attributes, references, and resources. That information retains its value beyond the original editing session and deserves a stable, understandable, and easy-to-preserve way to browse it.</p>
+          </article>
+
+          <article class="panel">
+            <p class="panel__label">Dependence on the application</p>
+            <h3>Access changes; the content still matters.</h3>
+            <p>Reading, editing, importing, migrating, and exporting are not the same operation. An editing restriction can make everyday use harder, but it does not automatically make the map unreadable.</p>
+          </article>
+        </div>
+
+        <p class="callout">The aim is not to replace MindMup, but to recover the content and preserve it in a format that can be browsed and downloaded.</p>
+      </div>
+    </section>
+
+    <section class="section section--surface" id="solucion" aria-labelledby="solucion-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">The solution</p>
+          <h2 id="solucion-title">A way to recover the content and preserve it outside the application.</h2>
+          <p>MindMup 2 Conversor processes compatible <code>.mup</code> files, extracts the map information, and generates normalized JSON-CMJN and self-contained HTML. The result can be browsed, downloaded, and preserved regardless of whether the conversion service remains available.</p>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature">
+            <p class="feature__index" aria-hidden="true">01</p>
+            <h3>Recover and read</h3>
+            <p>The converter extracts nodes, notes, attributes, stickers, icons, internal links, and external references from compatible maps.</p>
+          </article>
+
+          <article class="feature">
+            <p class="feature__index" aria-hidden="true">02</p>
+            <h3>View in HTML</h3>
+            <p>The visualization includes styles and scripts in the document itself. It lets you browse the tree, read notes, view resources, and change the theme without depending on MindMup.</p>
+          </article>
+
+          <article class="feature">
+            <p class="feature__index" aria-hidden="true">03</p>
+            <h3>Download and preserve</h3>
+            <p>The public variant lets you download the HTML as a ZIP; the variant with login lets you download the JSON; the local converter writes the JSON to a folder and can generate the HTML. Save the result if you need to keep it beyond the service's retention period.</p>
+          </article>
+        </div>
+
+        <div class="collections">
+          <div class="collections__head">
+            <h3>JSON-CMJN: ten collections for browsing the information</h3>
+            <p>The JSON is generated after the map has been extracted and normalized. It brings the information together in these collections:</p>
+          </div>
+          <ul class="collection-grid" role="list">
+            <li><code>metadata</code><span>Identity, version, source file, and node count.</span></li>
+            <li><code>nodes</code><span>Flattened nodes with hierarchy, depth, path, and sibling order.</span></li>
+            <li><code>notes</code><span>Notes associated with nodes.</span></li>
+            <li><code>attributes</code><span>Attributes and styles.</span></li>
+            <li><code>stickers</code><span>Stickers and emojis.</span></li>
+            <li><code>icons</code><span>Icons, including those embedded as <code>data:</code>.</span></li>
+            <li><code>links</code><span>Internal links between nodes.</span></li>
+            <li><code>externalRefs</code><span>Classified external references.</span></li>
+            <li><code>enums</code><span>Enumerated values.</span></li>
+            <li><code>indexes</code><span>Precomputed indexes.</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="funcionamiento" aria-labelledby="funcionamiento-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">How it works</p>
+          <h2 id="funcionamiento-title">From a <code>.mup</code> file to a result you can preserve.</h2>
+          <p>Compatibility is checked against the file's <code>formatVersion</code>. The process is the same in all three variants; what changes is where it runs and which output is offered.</p>
+        </div>
+
+        <ol class="steps" role="list" aria-label="Conversion process steps">
+          <li class="step">
+            <span class="step__number" aria-hidden="true">1</span>
+            <div>
+              <h3><span class="visually-hidden">Step 1: </span>Export the map</h3>
+              <p>Save the map from MindMup as a <code>.mup</code> file. Check that it declares <code>formatVersion: 3</code> before uploading it. The web variants validate the extension, size, JSON, and required fields; the local converter validates the JSON and the fields.</p>
+            </div>
+          </li>
+
+          <li class="step">
+            <span class="step__number" aria-hidden="true">2</span>
+            <div>
+              <h3><span class="visually-hidden">Step 2: </span>Convert the structure</h3>
+              <p>Eight layers read the map, flatten the tree, extract notes, separate attributes, convert stickers, classify references, assemble the collections, and save the result.</p>
+            </div>
+          </li>
+
+          <li class="step">
+            <span class="step__number" aria-hidden="true">3</span>
+            <div>
+              <h3><span class="visually-hidden">Step 3: </span>Get the JSON-CMJN</h3>
+              <p>The result is a normalized JSON with ten collections. It includes the node hierarchy, notes, attributes, resources, and computed indexes.</p>
+            </div>
+          </li>
+
+          <li class="step">
+            <span class="step__number" aria-hidden="true">4</span>
+            <div>
+              <h3><span class="visually-hidden">Step 4: </span>Open or download the result</h3>
+              <p>The visualizer builds a self-contained HTML file. The public variant lets you preview it and download it as a ZIP; the variant with login adds JSON download; the local converter writes the JSON and, with the corresponding option, the HTML to a folder.</p>
+            </div>
+          </li>
+        </ol>
+
+        <p class="callout"><strong>Compatibility:</strong> the converter accepts <code>.mup</code> files with <code>formatVersion: 3</code> and rejects those that declare <code>formatVersion: 2</code>. It does not read or validate the commercial version of MindMup.</p>
+
+        <div class="tech-block">
+          <h3>The eight conversion layers</h3>
+          <div class="table-wrap">
+            <table class="data-table">
+              <caption class="visually-hidden">Conversion process layers</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Layer</th>
+                  <th scope="col">What it does</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1. Reading</th>
+                  <td>Interprets the <code>.mup</code> file and extracts the map metadata.</td>
+                </tr>
+                <tr>
+                  <th scope="row">2. Flattening</th>
+                  <td>Traverses the tree and creates one node per idea with <code>parent_id</code>, <code>depth</code>, <code>path</code>, and <code>sibling_order</code>.</td>
+                </tr>
+                <tr>
+                  <th scope="row">3. Notes</th>
+                  <td>Extracts the note text and associated data.</td>
+                </tr>
+                <tr>
+                  <th scope="row">4. Attributes</th>
+                  <td>Separates node styles, positions, and attributes.</td>
+                </tr>
+                <tr>
+                  <th scope="row">5. Stickers</th>
+                  <td>Converts emoji codes into entries in the <code>stickers</code> collection.</td>
+                </tr>
+                <tr>
+                  <th scope="row">6. References</th>
+                  <td>Finds and classifies external addresses.</td>
+                </tr>
+                <tr>
+                  <th scope="row">7. Assembly</th>
+                  <td>Brings together the ten collections with <code>source_file</code>, <code>converted_at</code>, and <code>node_count</code> already calculated.</td>
+                </tr>
+                <tr>
+                  <th scope="row">8. Storage</th>
+                  <td>Writes the JSON to R2; the local converter saves it to the output folder.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <p class="process-note">The HTML includes tree navigation, a visible node counter, expand and collapse, theme switching, notes, stickers, icons, references, links, attachments, a node index, and breadcrumb navigation.</p>
+      </div>
+    </section>
+
+    <section class="section section--surface" id="variantes" aria-labelledby="variantes-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">Three variants</p>
+          <h2 id="variantes-title">Three ways to recover and preserve a map.</h2>
+          <p>All three variants share the same goal and the same conversion process, but they differ in access, infrastructure, output, and retention. Choose the one that matches where you want to run the conversion and how you plan to preserve the result.</p>
+        </div>
+
+        <div class="variant-grid">
+          <article class="variant-card variant-card--public">
+            <p class="variant-card__tag">No login</p>
+            <h3>Public variant</h3>
+            <p class="variant-card__intro">A straightforward way to convert a map from the browser. There is no account and no catalog. The JSON is generated to build the HTML, but it is not downloaded.</p>
+            <dl class="variant-specs">
+              <div><dt>Infrastructure</dt><dd>Cloudflare Pages, Functions, and internal Workers</dd></div>
+              <div><dt>Access</dt><dd>No account</dd></div>
+              <div><dt>Output</dt><dd>HTML and ZIP</dd></div>
+              <div><dt>Storage</dt><dd>Temporary, 24 hours</dd></div>
+            </dl>
+            <p class="variant-card__use-label">Ideal for</p>
+            <ul class="plain-list" role="list">
+              <li>A one-off conversion.</li>
+              <li>Sharing an HTML view.</li>
+              <li>Trying the project without installing the converter.</li>
+            </ul>
+            <p class="variant-card__address"><span>Public address</span>https://pg-mindmup-v2-public.pages.dev</p>
+            <p class="variant-card__retention">The URL expires and the result is no longer available after 24 hours. Download the ZIP to keep it.</p>
+            <div class="variant-card__cta">
+              <a class="button" href="https://pg-mindmup-v2-public.pages.dev">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <rect x="3" y="4" width="18" height="14" rx="2"></rect>
+                  <path d="M8 21h8"></path>
+                  <path d="M12 18v3"></path>
+                </svg>
+                <span>Open the public converter</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="variant-card">
+            <p class="variant-card__tag">With login</p>
+            <h3>Login and R2</h3>
+            <p class="variant-card__intro">A self-hosted installation on Cloudflare. It includes username and password access, a conversion catalog, and JSON and HTML downloads.</p>
+            <dl class="variant-specs">
+              <div><dt>Infrastructure</dt><dd>Your own Cloudflare account</dd></div>
+              <div><dt>Access</dt><dd>Username and password</dd></div>
+              <div><dt>Output</dt><dd>JSON, HTML, and ZIP</dd></div>
+              <div><dt>Storage</dt><dd>R2, results with no automatic deletion</dd></div>
+            </dl>
+            <p class="variant-card__use-label">Ideal for</p>
+            <ul class="plain-list" role="list">
+              <li>Archiving conversions.</li>
+              <li>Working with a catalog.</li>
+              <li>Reusing the JSON in other systems.</li>
+            </ul>
+            <div class="variant-card__cta">
+              <a class="button button--secondary" href="https://github.com/paginaviva/mindmup-version-2-conversor/blob/main/docs/instalacion-login-r2-en.md">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                </svg>
+                <span>Read the installation guide</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="variant-card">
+            <p class="variant-card__tag">No Cloudflare</p>
+            <h3>Local converter</h3>
+            <p class="variant-card__intro">Runs on Node.js 22 or later from the command line. It writes the JSON to a local folder and can generate HTML.</p>
+            <dl class="variant-specs">
+              <div><dt>Infrastructure</dt><dd>Node.js 22 or later</dd></div>
+              <div><dt>Access</dt><dd>Command line</dd></div>
+              <div><dt>Output</dt><dd>JSON and optional HTML</dd></div>
+              <div><dt>Storage</dt><dd>Local folder</dd></div>
+            </dl>
+            <p class="variant-card__use-label">Ideal for</p>
+            <ul class="plain-list" role="list">
+              <li>Converting several files.</li>
+              <li>Working without Cloudflare.</li>
+              <li>Integrating the conversion into your own process.</li>
+            </ul>
+            <div class="variant-card__cta">
+              <a class="button button--secondary" href="https://github.com/paginaviva/mindmup-version-2-conversor/blob/main/docs/conversor-local-en.md">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+                </svg>
+                <span>View local usage</span>
+              </a>
+            </div>
+          </article>
+        </div>
+
+        <p class="variants-note"><strong>An important difference:</strong> the 24-hour retention applies only to the public variant. The variant with login and R2 keeps results published in <code>output/</code> without automatic deletion; the local converter writes to the folder you specify.</p>
+      </div>
+    </section>
+
+    <section class="section section--surface" id="tecnica" aria-labelledby="tecnica-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">Technical information</p>
+          <h2 id="tecnica-title">Compatibility, versions, and retention.</h2>
+          <p>Compatibility is determined by the file's internal <code>formatVersion</code>, not by MindMup's commercial name. This distinction avoids confusing the application version with the file format version.</p>
+        </div>
+
+        <div class="split">
+          <article class="panel">
+            <p class="panel__label">What it accepts</p>
+            <h3>Files with <code>formatVersion: 3</code>.</h3>
+            <p>The converter accepts <code>.mup</code> files whose <code>formatVersion</code> is <strong>3</strong>. Files with <code>formatVersion: 2</code> are rejected; if the file has another value, it is not supported either.</p>
+            <p>The converter does not read or validate the commercial version of the MindMup application. The official documentation does not document the internal <code>formatVersion</code> value of <code>.mup</code> files.</p>
+          </article>
+
+          <article class="panel">
+            <p class="panel__label">What has not been demonstrated</p>
+            <h3>No universal compatibility has been demonstrated.</h3>
+            <p>It has not been possible to demonstrate that all files exported by MindMup 2 use <code>formatVersion: 3</code>, or that all files exported by MindMup 3 use another value. Check your file's <code>formatVersion</code> before assuming the converter will accept it.</p>
+          </article>
+        </div>
+
+        <p class="callout"><strong>Compatibility note:</strong> the converter accepts <code>.mup</code> with <code>formatVersion: 3</code>; it rejects <code>formatVersion: 2</code>; it does not read the commercial version of MindMup; and it has not been demonstrated that all MindMup 2 files use <code>formatVersion: 3</code>.</p>
+
+        <div class="tech-block">
+          <h3>Versions that should not be confused</h3>
+          <div class="table-wrap">
+            <table class="data-table">
+              <caption class="visually-hidden">Versions that should not be confused</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Concept</th>
+                  <th scope="col">What it is</th>
+                  <th scope="col">Use in the converter</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Commercial version of MindMup</th>
+                  <td data-label="What it is">MindMup 2 or MindMup 3.</td>
+                  <td data-label="Use in the converter">Not read or validated.</td>
+                </tr>
+                <tr>
+                  <th scope="row"><code>formatVersion</code> of the <code>.mup</code> file</th>
+                  <td data-label="What it is">Internal version of the file format.</td>
+                  <td data-label="Use in the converter">3 is accepted; 2 is rejected.</td>
+                </tr>
+                <tr>
+                  <th scope="row"><code>CONVERTER_VERSION</code></th>
+                  <td data-label="What it is">Version of the project's conversion process.</td>
+                  <td data-label="Use in the converter"><code>v7</code>.</td>
+                </tr>
+                <tr>
+                  <th scope="row">Package version</th>
+                  <td data-label="What it is">Repository version.</td>
+                  <td data-label="Use in the converter"><code>1.0.0</code>.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="tech-block">
+          <h3>Retention and preservation</h3>
+          <div class="table-wrap">
+            <table class="data-table">
+              <caption class="visually-hidden">Availability and preservation by variant</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Variant</th>
+                  <th scope="col">Result availability</th>
+                  <th scope="col">How to preserve it</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Public</th>
+                  <td data-label="Result availability">24 hours; the URL expires.</td>
+                  <td data-label="How to preserve it">Download the HTML as a ZIP.</td>
+                </tr>
+                <tr>
+                  <th scope="row">Login and R2</th>
+                  <td data-label="Result availability">Results published in <code>output/</code> with no automatic deletion.</td>
+                  <td data-label="How to preserve it">Download the JSON or HTML; the catalog keeps the conversions.</td>
+                </tr>
+                <tr>
+                  <th scope="row">Local</th>
+                  <td data-label="Result availability">Files on disk.</td>
+                  <td data-label="How to preserve it">Keep the output folder.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="documentacion" aria-labelledby="documentacion-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">Resources</p>
+          <h2 id="documentacion-title">Guides to install, run, and understand the project.</h2>
+          <p>The guides describe requirements, configuration, deployment, and checks. The code and documentation are in the public repository.</p>
+        </div>
+
+        <div class="resource-grid">
+          <a class="resource-card" href="https://github.com/paginaviva/mindmup-version-2-conversor/blob/main/docs/instalacion-publica-en.md">
+            <span class="resource-card__tag">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+              </svg>
+              <span>Installation guide</span>
+            </span>
+            <h3>Public installation</h3>
+            <p>Requirements, configuration, deployment, and checks for the variant without login.</p>
+            <span class="resource-card__path"><code>docs/instalacion-publica-en.md</code></span>
+            <span class="resource-card__action">Read the public guide</span>
+          </a>
+
+          <a class="resource-card" href="https://github.com/paginaviva/mindmup-version-2-conversor/blob/main/docs/instalacion-login-r2-en.md">
+            <span class="resource-card__tag">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+              </svg>
+              <span>Installation guide</span>
+            </span>
+            <h3>Installation with login and R2</h3>
+            <p>Installation in your own Cloudflare account, with access, catalog, R2, and JSON download.</p>
+            <span class="resource-card__path"><code>docs/instalacion-login-r2-en.md</code></span>
+            <span class="resource-card__action">Read the login guide</span>
+          </a>
+
+          <a class="resource-card" href="https://github.com/paginaviva/mindmup-version-2-conversor/blob/main/docs/conversor-local-en.md">
+            <span class="resource-card__tag">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+              </svg>
+              <span>Local usage</span>
+            </span>
+            <h3>Using the local converter</h3>
+            <p>Commands, options, and limitations of the converter that runs on Node.js.</p>
+            <span class="resource-card__path"><code>docs/conversor-local-en.md</code></span>
+            <span class="resource-card__action">View local usage</span>
+          </a>
+
+          <a class="resource-card" href="https://github.com/paginaviva/mindmup-version-2-conversor">
+            <span class="resource-card__tag">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="m8 8-4 4 4 4"></path>
+                <path d="m16 8 4 4-4 4"></path>
+                <path d="m14 5-4 14"></path>
+              </svg>
+              <span>Source code</span>
+            </span>
+            <h3>Repository</h3>
+            <p>Code, tests, synthetic examples, and project documentation.</p>
+            <span class="resource-card__path"><code>github.com/paginaviva/mindmup-version-2-conversor</code></span>
+            <span class="resource-card__action">Open the repository</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--surface section--license" id="licencia" aria-labelledby="licencia-title">
+      <div class="wrap">
+        <div class="license-panel">
+          <div>
+            <p class="kicker">Distribution</p>
+            <h2 id="licencia-title">MIT License</h2>
+            <p>The MindMup 2 Conversor code is distributed under the MIT License. Copyright (c) 2026 PáginaVIVA.</p>
+            <p>Third-party materials retain their licenses. The project does not include third-party fonts, images, or icons.</p>
+          </div>
+          <div class="license-actions">
+            <a class="button button--secondary" href="https://github.com/paginaviva/mindmup-version-2-conversor/blob/main/LICENSE">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M12 3 4.5 6v5c0 5 3.2 8 7.5 10 4.3-2 7.5-5 7.5-10V6z"></path>
+                <path d="m9 12 2 2 4-4"></path>
+              </svg>
+              <span>Read the MIT License</span>
+            </a>
+            <a class="text-link" href="https://github.com/paginaviva/mindmup-version-2-conversor/blob/main/THIRD_PARTY_LICENSES.md">Third-party licenses</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <p class="footer-brand">MindMup 2 Conversor</p>
+          <p class="footer-desc">Recover, browse, and preserve historical MindMup 2 mind maps in JSON-CMJN and self-contained HTML.</p>
+        </div>
+        <nav class="footer-nav" aria-label="Footer links">
+          <a href="https://pg-mindmup-v2-public.pages.dev">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <rect x="3" y="4" width="18" height="14" rx="2"></rect>
+              <path d="M8 21h8"></path>
+              <path d="M12 18v3"></path>
+            </svg>
+            <span>Public converter</span>
+          </a>
+          <a href="https://github.com/paginaviva/mindmup-version-2-conversor">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="m8 8-4 4 4 4"></path>
+              <path d="m16 8 4 4-4 4"></path>
+              <path d="m14 5-4 14"></path>
+            </svg>
+            <span>Repository</span>
+          </a>
+          <a href="#documentacion">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+              <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+            </svg>
+            <span>Documentation</span>
+          </a>
+          <a href="#licencia">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M12 3 4.5 6v5c0 5 3.2 8 7.5 10 4.3-2 7.5-5 7.5-10V6z"></path>
+              <path d="m9 12 2 2 4-4"></path>
+            </svg>
+            <span>MIT License</span>
+          </a>
+        </nav>
+      </div>
+      <p class="footer-note">Static page published on Cloudflare Pages. No analytics and no resources loaded from third parties.</p>
+    </div>
+  </footer>
+
+  <script src="../lang.js" defer></script>
+</body>
+</html>

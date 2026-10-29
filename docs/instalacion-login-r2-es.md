@@ -1,5 +1,8 @@
 # Instalación privada con inicio de sesión y R2 de MindMup 2 Conversor
 
+[Español](instalacion-login-r2-es.md) | [English](instalacion-login-r2-en.md)
+
+
 Esta guía describe cómo instalar MindMup 2 Conversor en la variante con inicio de sesión, catálogo y descarga de JSON en una cuenta propia de Cloudflare. Es una variante distribuible: no se despliega en la cuenta pública y no comparte recursos con otras instalaciones. A diferencia de la variante pública, incluye autenticación, catálogo y almacenamiento en `output/`; el conversor local no usa Cloudflare y escribe en el disco del usuario.
 
 ## Compatibilidad de los archivos

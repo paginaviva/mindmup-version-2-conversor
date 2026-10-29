@@ -1,5 +1,8 @@
 # Pruebas de MindMup 2 Conversor
 
+[Español](pruebas-es.md) | [English](pruebas-en.md)
+
+
 Las pruebas de MindMup 2 Conversor se ejecutan a mano desde la raíz del repositorio. No hay integración continua ni GitHub Actions. Las suites usan datos sintéticos, no necesitan red y no crean recursos de Cloudflare.
 
 La compatibilidad verificada por la suite se limita a archivos `.mup` con `formatVersion: 3` y al rechazo de `formatVersion: 2`. Las pruebas no demuestran compatibilidad universal con todos los archivos de MindMup 2 ni con todos los de MindMup 3.
@@ -80,7 +83,7 @@ node scripts/convert.js --input examples/entrada --output .tmp/pruebas/salida-js
 MUP_INPUT_DIR=examples/entrada MUP_OUTPUT_DIR=.tmp/pruebas/salida-json node scripts/convertir-local.js
 ```
 
-Los datos de `examples/entrada` son sintéticos. Consulta [examples/README.md](../examples/README.md).
+Los datos de `examples/entrada` son sintéticos. Consulta [examples/README-es.md](../examples/README-es.md).
 
 ## 3. Matriz de suites
 
@@ -123,7 +126,7 @@ Contiene ocho archivos sintéticos:
 | `invalido-sin-format-version.mup` | JSON válido con `ideas`, sin `formatVersion`. |
 | `invalido-sin-ideas.mup` | JSON válido con `formatVersion: 3`, sin `ideas`. |
 
-Los cinco inválidos están construidos para que el primer error que se alcance sea el indicado en `test/fixtures/README.md`. Ese README se centra en el conjunto inválido; los tres válidos se documentan en esta página.
+Los cinco inválidos están construidos para que el primer error que se alcance sea el indicado en `test/fixtures/README-es.md`. Ese README se centra en el conjunto inválido; los tres válidos se documentan en esta página.
 
 Las pruebas de Functions construyen sus propias entradas en memoria y no cargan estos archivos de forma automática. El conjunto sirve como corpus de referencia y para comprobaciones manuales de la validación de subidas. No edites un fixture para hacer pasar una prueba: corrige la prueba o el código.
 
@@ -383,7 +386,7 @@ Busca valores con forma de secreto en los archivos versionados:
 
 ```bash
 git grep -nE 'BEGIN [A-Z ]*PRIVATE KEY|CLOUDFLARE_API_TOKEN[=][A-Za-z0-9]|ADMIN_PASSWORD[=][^<{ ]|INTERNAL_SHARED_SECRET[=][A-Za-z0-9_-]{20,}' \
-  -- . ':(exclude)docs/pruebas.md' \
+  -- . ':(exclude)docs/pruebas-es.md' \
   || echo "Sin valores con forma de secreto."
 ```
 
@@ -391,11 +394,11 @@ Busca rutas absolutas y direcciones de despliegue:
 
 ```bash
 git grep -nE '/[[:alnum:]_.-]+/[[:alnum:]_.-]+/|[A-Za-z]:[/\\][^ ]+|https?://[^ )]*(pages\.dev|workers\.dev)' \
-  -- . ':(exclude)docs/pruebas.md' \
+  -- . ':(exclude)docs/pruebas-es.md' \
   || true
 ```
 
-Esta página contiene los propios patrones de búsqueda; por eso las dos órdenes excluyen `docs/pruebas.md`. Revisa esta página a mano. Los marcadores como `https://<PROYECTO>.pages.dev` son plantillas; un subdominio concreto exige revisión. No copies direcciones del despliegue privado.
+Esta página contiene los propios patrones de búsqueda; por eso las dos órdenes excluyen `docs/pruebas-es.md`. Revisa esta página a mano. Los marcadores como `https://<PROYECTO>.pages.dev` son plantillas; un subdominio concreto exige revisión. No copies direcciones del despliegue privado.
 
 Revisa también los registros de evidencia:
 
@@ -444,9 +447,9 @@ Las suites usan valores de prueba como `secret` o contraseñas sintéticas. Esos
 
 ## Documentación relacionada
 
-- [Conversor local](conversor-local.md)
-- [Arquitectura](arquitectura.md)
-- [Seguridad](seguridad.md)
-- [Configuración](configuracion.md)
+- [Conversor local](conversor-local-es.md)
+- [Arquitectura](arquitectura-es.md)
+- [Seguridad](seguridad-es.md)
+- [Configuración](configuracion-es.md)
 - [README del proyecto](../README.md)
-- [Ejemplos](../examples/README.md)
+- [Ejemplos](../examples/README-es.md)

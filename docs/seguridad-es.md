@@ -1,5 +1,8 @@
 # Seguridad de MindMup 2 Conversor
 
+[Español](seguridad-es.md) | [English](seguridad-en.md)
+
+
 Esta guía reúne las medidas que protegen los secretos, las sesiones, los límites de uso, la retención y el HTML generado. Está pensada para las dos variantes web de MindMup 2 Conversor. El conversor local no usa Cloudflare ni secretos de ejecución.
 
 El conversor solo lee archivos `.mup` compatibles con `formatVersion: 3` y no edita mapas en MindMup. La versión comercial de la aplicación no interviene en la validación.
@@ -208,7 +211,7 @@ Con Turnstile activo, el navegador carga el widget desde `https://challenges.clo
 
 Los contadores de cuota se incrementan antes de verificar Turnstile. Un intento rechazado consume cuota.
 
-Turnstile es un servicio externo. El navegador contacta con Cloudflare y la verificación envía el token y la dirección de red al servicio. Su uso se rige por los términos de Cloudflare; no se redistribuye. Si no puedes aceptar esa dependencia, deja `turnstileEnabled` en `false`: la aplicación no carga el widget ni llama a la verificación. El servicio está documentado en [THIRD_PARTY_LICENSES.md](../THIRD_PARTY_LICENSES.md).
+Turnstile es un servicio externo. El navegador contacta con Cloudflare y la verificación envía el token y la dirección de red al servicio. Su uso se rige por los términos de Cloudflare; no se redistribuye. Si no puedes aceptar esa dependencia, deja `turnstileEnabled` en `false`: la aplicación no carga el widget ni llama a la verificación. El servicio está documentado en [THIRD_PARTY_LICENSES-es.md](../THIRD_PARTY_LICENSES-es.md).
 
 ## 8. Contenido de usuario
 
@@ -228,12 +231,12 @@ El código se distribuye bajo licencia MIT. El texto está en [LICENSE](../LICEN
 El HTML generado incluye este aviso:
 
 ```html
-<!-- Copyright (c) 2026 Paginaviva. MIT License. -->
+<!-- Copyright (c) 2026 PáginaVIVA. MIT License. -->
 ```
 
 El ZIP contiene ese HTML, así que el aviso también viaja en la descarga. No elimines `LICENSE`, `app/LICENSE` ni el comentario del HTML al redistribuir el proyecto.
 
-Los materiales de terceros y el contenido de usuario se documentan en [THIRD_PARTY_LICENSES.md](../THIRD_PARTY_LICENSES.md). La licencia MIT no se aplica a material que no sea titularidad de Paginaviva.
+Los materiales de terceros y el contenido de usuario se documentan en [THIRD_PARTY_LICENSES-es.md](../THIRD_PARTY_LICENSES-es.md). La licencia MIT no se aplica a material que no sea titularidad de PáginaVIVA.
 
 ## 10. Respuesta ante exposición de credenciales
 
@@ -274,15 +277,15 @@ No cierres el incidente hasta haber rotado la credencial y comprobado el flujo a
 - [ ] Las cabeceras CSP, `X-Content-Type-Options: nosniff`, `Referrer-Policy: no-referrer` y `X-Frame-Options` se han comprobado en la aplicación y en el visor.
 - [ ] La barra de descarga se oculta en el iframe y el ZIP no la contiene.
 - [ ] Turnstile está desactivado o, si está activo, se acepta el servicio externo y el secreto solo está en Pages.
-- [ ] `LICENSE`, `app/LICENSE`, el aviso MIT del HTML generado y `THIRD_PARTY_LICENSES.md` están presentes.
+- [ ] `LICENSE`, `app/LICENSE`, el aviso MIT del HTML generado y `THIRD_PARTY_LICENSES-es.md` están presentes.
 - [ ] El cubo R2 no contiene datos de la instalación privada ni de usuarios reales.
 - [ ] No se incluye código de campaña ni `staging/` en la distribución pública.
 - [ ] No hay direcciones del despliegue privado en el README, la documentación, la página de presentación ni los ejemplos.
 
 ## Documentación relacionada
 
-- [Arquitectura](arquitectura.md)
-- [Instalación pública](instalacion-publica.md)
-- [Instalación con inicio de sesión y R2](instalacion-login-r2.md)
+- [Arquitectura](arquitectura-es.md)
+- [Instalación pública](instalacion-publica-es.md)
+- [Instalación con inicio de sesión y R2](instalacion-login-r2-es.md)
 - [Licencia MIT](../LICENSE)
-- [Licencias de terceros](../THIRD_PARTY_LICENSES.md)
+- [Licencias de terceros](../THIRD_PARTY_LICENSES-es.md)

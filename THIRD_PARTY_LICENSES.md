@@ -1,24 +1,28 @@
-# Licencias de terceros
+# Third-party licenses
 
-## Componentes incluidos
+[English](THIRD_PARTY_LICENSES.md) | [Español](THIRD_PARTY_LICENSES-es.md)
 
-Ninguno. Este producto no incorpora código, fuentes, imágenes ni iconos de terceros.
+> The English version is canonical. The Spanish version is an informative translation.
 
-## Servicios externos
+## Included components
 
-- **Cloudflare Turnstile:** servicio opcional de protección antiabuso. El navegador carga el widget desde `https://challenges.cloudflare.com/turnstile/v0/api.js` solo si `turnstileEnabled` está activo. No se redistribuye. Su uso se rige por los términos de Cloudflare.
+None. This product does not include third-party code, fonts, images, or icons.
 
-## Contenido de usuario
+## External services
 
-- Los iconos, adjuntos y recursos enlazados de los mapas pertenecen a sus autores. Este proyecto no los relicencia ni reclama su titularidad.
-- El HTML y el ZIP pueden reproducir esos recursos cuando el usuario los incluye en un mapa. Los derechos siguen siendo de sus autores.
+- **Cloudflare Turnstile:** optional anti-abuse service. The browser loads the widget from `https://challenges.cloudflare.com/turnstile/v0/api.js` only when `turnstileEnabled` is active. It is not redistributed. Its use is governed by Cloudflare's terms.
 
-## Datos de emojis y pegatinas
+## User content
 
-- Las tablas de emojis y pegatinas son una compilación manual de puntos de código Unicode y etiquetas de categoría.
-- No se distribuye ninguna fuente ni imagen de emoji de terceros.
-- Si alguna tabla se deriva de una fuente externa, debe añadirse aquí su licencia y atribución antes de redistribuirla.
+- Icons, attachments, and linked resources in maps belong to their authors. This project does not relicense them or claim ownership.
+- The HTML and ZIP may reproduce those resources when the user includes them in a map. The rights remain with their authors.
 
-## Licencia del proyecto
+## Emoji and sticker data
 
-MIT. Copyright (c) 2026 Paginaviva. Consulta [LICENSE](LICENSE).
+- The emoji and sticker tables are a manual compilation of Unicode code points and category labels.
+- No third-party emoji font or image is distributed.
+- If a table is derived from an external source, its license and attribution must be added here before redistribution.
+
+## Project license
+
+MIT. Copyright (c) 2026 PáginaVIVA. See [LICENSE](LICENSE).
