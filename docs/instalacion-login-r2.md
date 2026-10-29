@@ -284,6 +284,8 @@ desa-temp/credenciales.tsv
 Puedes crear los contenedores a partir de las plantillas:
 
 ```bash
+`desa-temp/` es una carpeta local de trabajo; no se distribuye en el clon. Puedes usar otro nombre si queda excluido de Git.
+
 mkdir -p desa-temp
 cp .env.example desa-temp/.env
 cp credenciales.example.tsv desa-temp/credenciales.tsv

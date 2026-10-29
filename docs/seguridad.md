@@ -15,7 +15,7 @@ Los únicos contenedores locales autorizados para valores sensibles reales son:
 | `desa-temp/.env` | Credenciales de despliegue y valores de generación | No |
 | `desa-temp/credenciales.tsv` | Tabla de servicios, cuentas y secretos | No |
 
-`desa-temp/` está excluida de Git. Los archivos `.env` y `credenciales.tsv` tampoco se versionan aunque estén fuera de esa carpeta. No copies sus valores en respuestas, comandos, archivos generados, registros, capturas, incidencias ni resultados de pruebas.
+`desa-temp/` está excluida de Git. Los archivos `.env` y `credenciales.tsv` tampoco se versionan aunque estén fuera de esa carpeta. No copies sus valores en respuestas, comandos, archivos generados, registros, capturas, incidencias ni resultados de pruebas. En un clon limpio, `desa-temp/` no existe: es una carpeta local de trabajo. Créala con `mkdir -p desa-temp` o usa otro directorio excluido de Git.
 
 `.dev.vars` solo puede contener valores de prueba no sensibles o no existir. Nunca guardes secretos reales en `.dev.vars`. El archivo de ejemplo usa valores como `test-only`.
 

@@ -28,7 +28,7 @@ node scripts/convertir-local.js
 
 ## Salida
 
-La carpeta `salida/` contiene los archivos generados. Se puede vaciar y regenerar con el comando anterior. Los archivos de salida no se editan a mano.
+La carpeta `salida/` está vacía en el repositorio. El comando crea los archivos generados al ejecutarse; se puede vaciar y regenerar con el mismo comando. Los archivos de salida no se editan a mano.
 
 ## Nota
 

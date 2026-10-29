@@ -4,6 +4,24 @@ Este directorio contiene archivos de prueba para la validación de subidas de ma
 
 ## Contenido
 
+- `mup/valido-minimo.mup`: árbol mínimo con nodos raíz e hijos.
+- `mup/valido-completo.mup`: notas, atributos, pegatinas, enlaces externos e icono.
+- `mup/valido-adjunto.mup`: adjunto de texto y un icono pequeño.
+- `esperado/valido-minimo.contrato.json`, `esperado/valido-completo.contrato.json` y `esperado/valido-adjunto.contrato.json`: contratos JSON-CMJN esperados.
+- `mup/invalido-*`: cinco fixtures de rechazo, uno por motivo.
+
+## Fixtures válidos
+
+| Archivo | Contenido | Uso |
+|---|---|---|
+| `mup/valido-minimo.mup` | Árbol simple de 10 nodos | Conversión mínima y pruebas de capas |
+| `mup/valido-completo.mup` | 12 nodos con notas, atributos, pegatinas, icono, enlace y referencias | Conversión completa y pruebas de capas |
+| `mup/valido-adjunto.mup` | 6 nodos con adjunto de texto e icono | Pruebas de adjuntos |
+
+Los contratos de `esperado/` contienen las diez colecciones y `node_count` coherente con `nodes.length`.
+
+## Fixtures inválidos
+
 La carpeta `mup/` reúne cinco fixtures inválidos. Cada uno representa un único motivo de rechazo y está pensado para la suite de subida (`test/functions/test-upload.js`).
 
 | Archivo | Construcción | Rechazo esperado |
@@ -16,15 +34,7 @@ La carpeta `mup/` reúne cinco fixtures inválidos. Cada uno representa un únic
 
 ## Orden de validación
 
-La subida comprueba primero la extensión, después el tamaño mínimo, después el tamaño máximo, después el JSON y, por último, los campos obligatorios. Los fixtures están construidos para que el primer error que se alcance sea el indicado en la tabla:
-
-- `invalido-extension.txt` no se lee: la extensión se valida antes del contenido. Por eso basta con un texto mínimo.
-- `invalido-pequeno.mup` es JSON válido, pero no llega a parsearse porque el tamaño se comprueba antes.
-- `invalido-json.mup` supera el tamaño mínimo y falla al interpretarse como JSON.
-- `invalido-sin-format-version.mup` supera el tamaño y el parseo, pero no tiene `formatVersion`.
-- `invalido-sin-ideas.mup` supera el tamaño y el parseo, tiene `formatVersion`, pero no tiene `ideas`.
-
-Los tres últimos incluyen un campo `relleno` con notas sintéticas para superar 1 KB sin aportar datos reales.
+La subida comprueba primero la extensión, después el tamaño mínimo, después el tamaño máximo, después el JSON y, por último, los campos obligatorios. Los fixtures están construidos para que el primer error que se alcance sea el indicado en la tabla.
 
 ## Mantenimiento
 
@@ -32,4 +42,3 @@ Los tres últimos incluyen un campo `relleno` con notas sintéticas para superar
 - Los identificadores internos son genéricos y no se reutilizan entre fixtures.
 - No añadir datos reales, rutas absolutas ni URL privadas.
 - Si cambian los mensajes de validación, actualizar la tabla y las pruebas correspondientes.
-- Los fixtures válidos y sus contratos se añadirán por separado; este README documenta únicamente el conjunto inválido.

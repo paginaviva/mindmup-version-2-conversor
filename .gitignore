@@ -15,5 +15,9 @@ node_modules/
 .wrangler/
 .tmp/
 tmp/
+input/
+output/
+temp/
+*.log
 .github/workflows/
 test/visualizer/reference-data/
