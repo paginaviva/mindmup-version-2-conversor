@@ -1,0 +1,25 @@
+{
+  "formatVersion": 3,
+  "id": "mapa-sintetico-minimo",
+  "title": "Mapa sintético mínimo de ejemplo",
+  "author": "Equipo sintético de pruebas",
+  "created": 1768471200,
+  "updated": 1768471200,
+  "ideas": {
+    "1": {
+      "id": "idea-raiz-minimo",
+      "title": "Nodo raíz del mapa mínimo",
+      "ideas": {
+        "1": { "id": "idea-hoja-minimo-1", "title": "Hoja 1: introducción sintética al mapa", "ideas": {} },
+        "2": { "id": "idea-hoja-minimo-2", "title": "Hoja 2: objetivos inventados del ejemplo", "ideas": {} },
+        "3": { "id": "idea-hoja-minimo-3", "title": "Hoja 3: alcance ficticio de la prueba", "ideas": {} },
+        "4": { "id": "idea-hoja-minimo-4", "title": "Hoja 4: recursos simulados del equipo", "ideas": {} },
+        "5": { "id": "idea-hoja-minimo-5", "title": "Hoja 5: calendario imaginario del plan", "ideas": {} },
+        "6": { "id": "idea-hoja-minimo-6", "title": "Hoja 6: riesgos inventados del ejercicio", "ideas": {} },
+        "7": { "id": "idea-hoja-minimo-7", "title": "Hoja 7: revisión ficticia de resultados", "ideas": {} },
+        "8": { "id": "idea-hoja-minimo-8", "title": "Hoja 8: cierre simulado de la prueba", "ideas": {} },
+        "9": { "id": "idea-hoja-minimo-9", "title": "Hoja 9: anexo sintético sin datos reales", "ideas": {} }
+      }
+    }
+  }
+}

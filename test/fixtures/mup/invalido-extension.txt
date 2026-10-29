@@ -1,0 +1,3 @@
+Archivo de prueba sintetico con extension incorrecta.
+No es un mapa de MindMup y no contiene datos reales.
+La validacion de extension se ejecuta antes de leer el contenido.

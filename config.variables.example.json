@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "converter": {
+    "API_PATH_CONVERT": "/convertir",
+    "API_PATH_STATUS": "/status",
+    "API_PATH_DOWNLOAD": "/download",
+    "DO_BINDING_NAME": "MMUP_CONVERT_DO",
+    "BINDING_R2": "MMUP_BUCKET",
+    "R2_INPUT_PATH_TEMPLATE": "input/{uuid}.mup",
+    "R2_OUTPUT_PATH_TEMPLATE": "output/{uuid}.json",
+    "R2_TEMP_INPUT_PATH_TEMPLATE": "temp/{uuid}.mup",
+    "R2_TEMP_OUTPUT_PATH_TEMPLATE": "temp/{uuid}/output.json",
+    "UPLOAD_TIMEOUT_SECONDS": 30,
+    "HTTP_OK": 200,
+    "HTTP_ACCEPTED": 202,
+    "HTTP_BAD_REQUEST": 400,
+    "HTTP_NOT_FOUND": 404,
+    "HTTP_PAYLOAD_TOO_LARGE": 413,
+    "HTTP_INTERNAL_ERROR": 500,
+    "MUP_FORMAT_VERSION": 3,
+    "MUP_KEY_IDEAS": "ideas",
+    "DEFAULT_STICKER_CATEGORY": "unknown",
+    "DEFAULT_REF_TYPE": "web_page",
+    "DEFAULT_LINK_RESOLUTION": "unresolved",
+    "URL_REGEX_PATTERN": "(https?:\\/\\/[^\\s]+|www\\.[^\\s]+)",
+    "WORKER_URL": ""
+  },
+  "visualizer": {
+    "allowedOrigins": [],
+    "outputPrefix": "output/",
+    "jsonSuffix": ".json",
+    "listCacheSeconds": 60,
+    "corsMaxAgeSeconds": 86400,
+    "durableObjectBinding": "MMUP_VISOR_DO"
+  }
+}

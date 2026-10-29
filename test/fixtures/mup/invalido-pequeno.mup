@@ -1,0 +1,22 @@
+{
+  "formatVersion": 3,
+  "id": "mapa-sintetico-pequeno",
+  "title": "Mapa sintetico pequeno",
+  "author": "Equipo sintetico",
+  "created": 1768471200,
+  "updated": 1768471200,
+  "attr": { "theme": "default" },
+  "ideas": {
+    "1": {
+      "id": "idea-raiz",
+      "title": "Nodo raiz",
+      "ideas": {
+        "1": {
+          "id": "idea-hoja-1",
+          "title": "Nodo hoja",
+          "ideas": {}
+        }
+      }
+    }
+  }
+}

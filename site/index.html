@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MindMup Conversor — Mapas MindMup a JSON-CMJN y HTML</title>
+  <meta name="description" content="Convierte mapas MindMup versión 3 en JSON-CMJN normalizado y HTML autocontenido. Tres variantes: pública, con inicio de sesión y R2, y local.">
+  <meta name="author" content="Paginaviva">
+  <meta name="theme-color" content="#0b5cad">
+  <meta name="color-scheme" content="light">
+  <meta name="referrer" content="no-referrer">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='12'%20fill='%230b5cad'/%3E%3Cpath%20d='M18%2046V18h7l7%2011%207-11h7v28h-7V29l-7%2011-7-11v17z'%20fill='%23fff'/%3E%3C/svg%3E">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:site_name" content="MindMup Conversor">
+  <meta property="og:title" content="MindMup Conversor — Mapas MindMup a JSON-CMJN y HTML">
+  <meta property="og:description" content="Convierte mapas MindMup versión 3 en JSON-CMJN normalizado y HTML autocontenido. Tres variantes: pública, con inicio de sesión y R2, y local.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido principal</a>
+
+  <header class="site-header">
+    <div class="wrap site-header__inner">
+      <a class="brand" href="#inicio" aria-label="MindMup Conversor, ir al inicio">
+        <span class="brand-mark" aria-hidden="true">MC</span>
+        <span class="brand-text">
+          <span>MindMup</span>
+          <span>Conversor</span>
+        </span>
+      </a>
+
+      <nav class="site-nav" aria-label="Navegación principal">
+        <ul role="list">
+          <li><a href="#problema">Problema</a></li>
+          <li><a href="#solucion">Solución</a></li>
+          <li><a href="#funcionamiento">Funcionamiento</a></li>
+          <li><a href="#variantes">Variantes</a></li>
+          <li><a href="#documentacion">Documentación</a></li>
+        </ul>
+      </nav>
+
+      <a class="header-action" href="https://pg-mindmup-v2-public.pages.dev">Conversor público</a>
+    </div>
+  </header>
+
+  <main id="contenido" tabindex="-1">
+    <section class="hero" id="inicio" aria-labelledby="hero-title">
+      <div class="wrap hero__grid">
+        <div class="hero__copy">
+          <p class="eyebrow">Mapas MindMup versión 3</p>
+          <h1 id="hero-title">Convierte mapas MindMup en datos y vistas que puedes reutilizar.</h1>
+          <p class="hero__lead">MindMup Conversor transforma un archivo <code>.mup</code> en JSON-CMJN normalizado y en un HTML autocontenido. Conserva la jerarquía, las notas, los atributos y los recursos del mapa fuera de la interfaz de MindMup.</p>
+          <div class="hero__actions">
+            <a class="button" href="https://pg-mindmup-v2-public.pages.dev">Abrir el conversor público</a>
+            <a class="button button--secondary" href="https://github.com/paginaviva/mindmup-version-2-conversor">Ver el repositorio</a>
+          </div>
+          <p class="hero__note">La variante pública no necesita cuenta y ofrece vista previa y descarga del HTML en ZIP. La descarga de JSON está disponible en la variante con inicio de sesión y en el conversor local.</p>
+        </div>
+
+        <aside class="hero-card" aria-label="Resumen del resultado de la conversión">
+          <p class="hero-card__label">Resultado de la conversión</p>
+          <div class="hero-card__file">
+            <span class="file-badge">.mup</span>
+            <span>mapa.mup</span>
+          </div>
+          <dl class="hero-card__rows">
+            <div class="hero-card__row">
+              <dt>Datos</dt>
+              <dd>JSON-CMJN<span>diez colecciones normalizadas</span></dd>
+            </div>
+            <div class="hero-card__row">
+              <dt>Vista</dt>
+              <dd>HTML<span>estilos y scripts incluidos</span></dd>
+            </div>
+            <div class="hero-card__row">
+              <dt>Entrega</dt>
+              <dd>ZIP o carpeta<span>según la variante</span></dd>
+            </div>
+          </dl>
+          <p class="hero-card__foot">La salida depende de la variante: HTML y ZIP, JSON y HTML, o archivos locales.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="problema" aria-labelledby="problema-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">El problema</p>
+          <h2 id="problema-title">El árbol de MindMup está pensado para editar, no para consultar.</h2>
+          <p>MindMup organiza las ideas como un árbol anidado. Es una forma natural de construir un mapa, pero la información queda sujeta a esa estructura y a la interfaz de la herramienta.</p>
+        </div>
+
+        <div class="split">
+          <article class="panel">
+            <p class="panel__label">Entrada</p>
+            <h3>Un árbol cómodo de editar</h3>
+            <p>Cada idea, nota, atributo o enlace ocupa una posición dentro del árbol. El archivo <code>.mup</code> conserva esa organización, pero no ofrece una vista independiente para consultarla.</p>
+          </article>
+
+          <article class="panel">
+            <p class="panel__label">Límite</p>
+            <h3>Información difícil de reutilizar</h3>
+            <p>Consultar nodos y relaciones, comparar mapas o llevar notas y recursos a otro sistema exige extraer los datos y darles una forma predecible. El árbol original no basta para hacerlo con comodidad.</p>
+          </article>
+        </div>
+
+        <p class="callout">El resultado es que la información existe, pero queda dentro del árbol y de la interfaz de MindMup. Convertir el mapa a JSON permite extraerla y darle una estructura predecible.</p>
+      </div>
+    </section>
+
+    <section class="section section--surface" id="solucion" aria-labelledby="solucion-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">La solución</p>
+          <h2 id="solucion-title">Una estructura normalizada y una vista lista para abrir.</h2>
+          <p>MindMup Conversor aplana el árbol, separa los datos en colecciones relacionadas y genera un HTML que funciona sin MindMup. El JSON resultante se puede archivar, consultar o integrar en otros sistemas; el HTML se puede abrir y compartir sin la herramienta original.</p>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature">
+            <p class="feature__index" aria-hidden="true">01</p>
+            <h3>Jerarquía aplanada</h3>
+            <p>Cada idea se convierte en un nodo con <code>parent_id</code>, <code>depth</code>, <code>path</code> y <code>sibling_order</code>. La jerarquía se puede reconstruir y consultar sin recorrer el árbol original.</p>
+          </article>
+
+          <article class="feature">
+            <p class="feature__index" aria-hidden="true">02</p>
+            <h3>Datos separados</h3>
+            <p>Las notas, los atributos, las pegatinas, los iconos, los enlaces internos y las referencias externas se extraen en colecciones propias.</p>
+          </article>
+
+          <article class="feature">
+            <p class="feature__index" aria-hidden="true">03</p>
+            <h3>HTML autocontenido</h3>
+            <p>La visualización incluye estilos y scripts en el propio documento. Permite navegar por el árbol, leer notas y consultar recursos sin depender de MindMup.</p>
+          </article>
+        </div>
+
+        <div class="collections">
+          <div class="collections__head">
+            <h3>Diez colecciones, una estructura predecible</h3>
+            <p>El JSON-CMJN reúne la información del mapa en estas colecciones:</p>
+          </div>
+          <ul class="collection-grid" role="list">
+            <li><code>metadata</code><span>Identidad, versión, archivo de origen y número de nodos.</span></li>
+            <li><code>nodes</code><span>Nodos aplanados con jerarquía, profundidad, ruta y orden entre hermanos.</span></li>
+            <li><code>notes</code><span>Notas asociadas a los nodos.</span></li>
+            <li><code>attributes</code><span>Atributos y estilos.</span></li>
+            <li><code>stickers</code><span>Pegatinas y emojis.</span></li>
+            <li><code>icons</code><span>Iconos, incluidos los incrustados como <code>data:</code>.</span></li>
+            <li><code>links</code><span>Enlaces internos entre nodos.</span></li>
+            <li><code>externalRefs</code><span>Referencias externas clasificadas.</span></li>
+            <li><code>enums</code><span>Valores enumerados.</span></li>
+            <li><code>indexes</code><span>Índices precalculados.</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="funcionamiento" aria-labelledby="funcionamiento-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">Cómo funciona</p>
+          <h2 id="funcionamiento-title">De un archivo <code>.mup</code> a un resultado utilizable.</h2>
+          <p>El proceso es el mismo en las tres variantes; cambia dónde se ejecuta y qué salida se ofrece.</p>
+        </div>
+
+        <ol class="steps" role="list" aria-label="Pasos del proceso de conversión">
+          <li class="step">
+            <span class="step__number" aria-hidden="true">1</span>
+            <div>
+              <h3><span class="visually-hidden">Paso 1: </span>Exporta el mapa</h3>
+              <p>Guarda el mapa desde MindMup versión 3 como archivo <code>.mup</code>. Las variantes web validan la extensión, el tamaño, el JSON y los campos obligatorios; el conversor local valida el JSON y los campos.</p>
+            </div>
+          </li>
+
+          <li class="step">
+            <span class="step__number" aria-hidden="true">2</span>
+            <div>
+              <h3><span class="visually-hidden">Paso 2: </span>Convierte la estructura</h3>
+              <p>Ocho capas leen el mapa, aplanan el árbol, extraen notas, separan atributos, convierten pegatinas, clasifican referencias, ensamblan las colecciones y guardan el resultado.</p>
+            </div>
+          </li>
+
+          <li class="step">
+            <span class="step__number" aria-hidden="true">3</span>
+            <div>
+              <h3><span class="visually-hidden">Paso 3: </span>Obtén el JSON-CMJN</h3>
+              <p>El resultado es un JSON normalizado con diez colecciones. Incluye la jerarquía de nodos, las notas, los atributos, los recursos y los índices calculados.</p>
+            </div>
+          </li>
+
+          <li class="step">
+            <span class="step__number" aria-hidden="true">4</span>
+            <div>
+              <h3><span class="visually-hidden">Paso 4: </span>Abre o descarga el resultado</h3>
+              <p>El visualizador construye un HTML autocontenido. La variante pública lo ofrece para previsualizar y descargar en ZIP; la variante con inicio de sesión añade la descarga de JSON; el conversor local escribe el JSON y, con la opción correspondiente, el HTML en una carpeta.</p>
+            </div>
+          </li>
+        </ol>
+
+        <p class="process-note">El HTML incluye navegación por el árbol, contador de nodos visibles, expansión y contracción, cambio de tema, notas, pegatinas, iconos, referencias, enlaces, adjuntos, índice y ruta de navegación.</p>
+      </div>
+    </section>
+
+    <section class="section section--surface" id="variantes" aria-labelledby="variantes-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">Tres formas de uso</p>
+          <h2 id="variantes-title">Elige la variante que encaja con tu caso.</h2>
+          <p>Las dos variantes web comparten el mismo código; la configuración decide el modo. El conversor local funciona sin Cloudflare.</p>
+        </div>
+
+        <div class="variant-grid">
+          <article class="variant-card variant-card--public">
+            <p class="variant-card__tag">Sin inicio de sesión</p>
+            <h3>Variante pública</h3>
+            <p class="variant-card__intro">Una forma directa de convertir un mapa. No hay cuenta ni catálogo. El JSON se genera para construir el HTML, pero no se descarga.</p>
+            <dl class="variant-specs">
+              <div><dt>Infraestructura</dt><dd>Cloudflare Pages, Functions y Workers internos</dd></div>
+              <div><dt>Acceso</dt><dd>Sin cuenta</dd></div>
+              <div><dt>Salida</dt><dd>HTML y ZIP</dd></div>
+              <div><dt>Almacenamiento</dt><dd>Temporal, 24 horas</dd></div>
+            </dl>
+            <p class="variant-card__use-label">Ideal para</p>
+            <ul class="plain-list" role="list">
+              <li>Una conversión puntual.</li>
+              <li>Compartir una vista HTML.</li>
+              <li>Probar el proyecto sin instalar el conversor.</li>
+            </ul>
+            <p class="variant-card__address"><span>Dirección pública</span>https://pg-mindmup-v2-public.pages.dev</p>
+            <div class="variant-card__cta">
+              <a class="button" href="https://pg-mindmup-v2-public.pages.dev">Abrir el conversor público</a>
+            </div>
+          </article>
+
+          <article class="variant-card">
+            <p class="variant-card__tag">Con inicio de sesión</p>
+            <h3>Inicio de sesión y R2</h3>
+            <p class="variant-card__intro">Instalación propia en Cloudflare. Incluye acceso con usuario y contraseña, catálogo de conversiones, descarga de JSON y de HTML.</p>
+            <dl class="variant-specs">
+              <div><dt>Infraestructura</dt><dd>Cuenta propia de Cloudflare</dd></div>
+              <div><dt>Acceso</dt><dd>Usuario y contraseña</dd></div>
+              <div><dt>Salida</dt><dd>JSON, HTML y ZIP</dd></div>
+              <div><dt>Almacenamiento</dt><dd>R2, resultados sin borrado automático</dd></div>
+            </dl>
+            <p class="variant-card__use-label">Ideal para</p>
+            <ul class="plain-list" role="list">
+              <li>Archivar conversiones.</li>
+              <li>Trabajar con un catálogo.</li>
+              <li>Reutilizar el JSON en otros sistemas.</li>
+            </ul>
+            <div class="variant-card__cta">
+              <a class="button button--secondary" href="https://github.com/paginaviva/mindmup-version-2-conversor/blob/main/docs/instalacion-login-r2.md">Leer la guía de instalación</a>
+            </div>
+          </article>
+
+          <article class="variant-card">
+            <p class="variant-card__tag">Sin Cloudflare</p>
+            <h3>Conversor local</h3>
+            <p class="variant-card__intro">Se ejecuta con Node.js 22 o superior desde la línea de comandos. Escribe el JSON en una carpeta local y puede generar HTML.</p>
+            <dl class="variant-specs">
+              <div><dt>Infraestructura</dt><dd>Node.js 22 o superior</dd></div>
+              <div><dt>Acceso</dt><dd>Línea de comandos</dd></div>
+              <div><dt>Salida</dt><dd>JSON y HTML opcional</dd></div>
+              <div><dt>Almacenamiento</dt><dd>Carpeta local</dd></div>
+            </dl>
+            <p class="variant-card__use-label">Ideal para</p>
+            <ul class="plain-list" role="list">
+              <li>Convertir varios archivos.</li>
+              <li>Trabajar sin Cloudflare.</li>
+              <li>Integrar la conversión en un proceso propio.</li>
+            </ul>
+            <div class="variant-card__cta">
+              <a class="button button--secondary" href="https://github.com/paginaviva/mindmup-version-2-conversor/blob/main/docs/conversor-local.md">Consultar el uso local</a>
+            </div>
+          </article>
+        </div>
+
+        <p class="variants-note"><strong>Una diferencia importante:</strong> la variante pública usa R2 para objetos temporales y no ofrece catálogo ni descarga de JSON. La variante con inicio de sesión conserva los resultados en R2 y permite descargar el JSON. El conversor local escribe en la carpeta que indiques.</p>
+      </div>
+    </section>
+
+    <section class="section" id="documentacion" aria-labelledby="documentacion-title">
+      <div class="wrap">
+        <div class="section-head">
+          <p class="kicker">Recursos</p>
+          <h2 id="documentacion-title">Guías para instalar, ejecutar y entender el proyecto.</h2>
+          <p>Las guías describen requisitos, configuración, despliegue y comprobaciones. El código y la documentación están en el repositorio público.</p>
+        </div>
+
+        <div class="resource-grid">
+          <a class="resource-card" href="https://github.com/paginaviva/mindmup-version-2-conversor/blob/main/docs/instalacion-publica.md">
+            <span class="resource-card__tag">Guía de instalación</span>
+            <h3>Instalación pública</h3>
+            <p>Requisitos, configuración, despliegue y comprobaciones de la variante sin inicio de sesión.</p>
+            <span class="resource-card__path"><code>docs/instalacion-publica.md</code></span>
+            <span class="resource-card__action">Leer la guía pública</span>
+          </a>
+
+          <a class="resource-card" href="https://github.com/paginaviva/mindmup-version-2-conversor/blob/main/docs/instalacion-login-r2.md">
+            <span class="resource-card__tag">Guía de instalación</span>
+            <h3>Instalación con inicio de sesión y R2</h3>
+            <p>Instalación en una cuenta propia de Cloudflare, con acceso, catálogo, R2 y descarga de JSON.</p>
+            <span class="resource-card__path"><code>docs/instalacion-login-r2.md</code></span>
+            <span class="resource-card__action">Leer la guía con inicio de sesión</span>
+          </a>
+
+          <a class="resource-card" href="https://github.com/paginaviva/mindmup-version-2-conversor/blob/main/docs/conversor-local.md">
+            <span class="resource-card__tag">Uso local</span>
+            <h3>Uso del conversor local</h3>
+            <p>Comandos, opciones y limitaciones del conversor que funciona con Node.js.</p>
+            <span class="resource-card__path"><code>README.md</code></span>
+            <span class="resource-card__action">Consultar el uso local</span>
+          </a>
+
+          <a class="resource-card" href="https://github.com/paginaviva/mindmup-version-2-conversor">
+            <span class="resource-card__tag">Código fuente</span>
+            <h3>Repositorio</h3>
+            <p>Código, pruebas, ejemplos sintéticos y documentación del proyecto.</p>
+            <span class="resource-card__path"><code>github.com/paginaviva/mindmup-version-2-conversor</code></span>
+            <span class="resource-card__action">Abrir el repositorio</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--surface section--license" id="licencia" aria-labelledby="licencia-title">
+      <div class="wrap">
+        <div class="license-panel">
+          <div>
+            <p class="kicker">Distribución</p>
+            <h2 id="licencia-title">Licencia MIT</h2>
+            <p>El código de MindMup Conversor se distribuye con licencia MIT. Copyright (c) 2026 Paginaviva.</p>
+            <p>Los materiales de terceros conservan su licencia. El proyecto no incorpora fuentes, imágenes ni iconos de terceros.</p>
+          </div>
+          <div class="license-actions">
+            <a class="button button--secondary" href="https://github.com/paginaviva/mindmup-version-2-conversor/blob/main/LICENSE">Leer la licencia MIT</a>
+            <a class="text-link" href="https://github.com/paginaviva/mindmup-version-2-conversor/blob/main/THIRD_PARTY_LICENSES.md">Licencias de terceros</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div>
+          <p class="footer-brand">MindMup Conversor</p>
+          <p class="footer-desc">Convierte mapas MindMup versión 3 en JSON-CMJN y HTML autocontenido.</p>
+        </div>
+        <nav class="footer-nav" aria-label="Enlaces del pie de página">
+          <a href="https://pg-mindmup-v2-public.pages.dev">Conversor público</a>
+          <a href="https://github.com/paginaviva/mindmup-version-2-conversor">Repositorio</a>
+          <a href="#documentacion">Documentación</a>
+          <a href="#licencia">Licencia MIT</a>
+        </nav>
+      </div>
+      <p class="footer-note">Página estática publicada en Cloudflare Pages. Sin analítica ni recursos cargados desde terceros.</p>
+    </div>
+  </footer>
+</body>
+</html>

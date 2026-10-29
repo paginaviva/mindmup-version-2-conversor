@@ -1,0 +1,15 @@
+{
+  "formatVersion": 3,
+  "id": "empty-test-map",
+  "title": "Mapa vacío",
+  "author": "Tester",
+  "created": 1700000000,
+  "updated": 1700000001,
+  "ideas": {
+    "1": {
+      "id": "root-node-empty",
+      "title": "Raíz",
+      "attr": {}
+    }
+  }
+}

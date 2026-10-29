@@ -1,0 +1,212 @@
+{
+  "formatVersion": 3,
+  "id": "mapa-sintetico-completo",
+  "title": "Mapa sintético completo de ejemplo",
+  "author": "Equipo sintético de pruebas",
+  "created": 1768471200,
+  "updated": 1768471200,
+  "attr": {
+    "theme": "default",
+    "themeOverrides": {
+      "canvas": { "backgroundColor": "#efe9e3" }
+    }
+  },
+  "ideas": {
+    "1": {
+      "id": "idea-raiz-completo",
+      "title": "Mapa sintético completo",
+      "attr": {
+        "position": [0, 0, 1],
+        "style": {
+          "backgroundColor": "#FFF4E6",
+          "color": "#1F2933",
+          "fontSize": 18,
+          "bold": true,
+          "textAlign": "center"
+        },
+        "collapsed": false,
+        "shape": "rounded",
+        "borderStyle": "solid",
+        "borderColor": "#3366CC",
+        "borderWidth": 2
+      },
+      "ideas": {
+        "1": {
+          "id": "idea-planificacion",
+          "title": "Planificación del proyecto",
+          "attr": {
+            "position": [220, -120, 1],
+            "style": {
+              "backgroundColor": "#E8F0FE",
+              "color": "#174EA6",
+              "fontSize": 16,
+              "italic": true,
+              "textAlign": "left"
+            },
+            "note": {
+              "index": 0,
+              "text": "Nota corta sintética para la planificación."
+            }
+          },
+          "ideas": {
+            "1": {
+              "id": "idea-objetivos",
+              "title": "Objetivos y alcance",
+              "attr": {
+                "position": [420, -160, 1],
+                "style": {
+                  "backgroundColor": "#E6F4EA",
+                  "color": "#137333",
+                  "fontSize": 14,
+                  "bold": true,
+                  "underline": true
+                },
+                "stickers": ["emoji:1F680"]
+              },
+              "ideas": {}
+            },
+            "2": {
+              "id": "idea-hitos",
+              "title": "Hitos principales",
+              "attr": {
+                "position": [420, -80, 1],
+                "note": {
+                  "index": 1,
+                  "text": "Nota larga sintética con varias líneas.\nLínea dos: contenido inventado para el visor.\nLínea tres: sin datos reales ni rutas privadas."
+                }
+              },
+              "ideas": {}
+            }
+          }
+        },
+        "2": {
+          "id": "idea-documentacion",
+          "title": "Documentación y guías",
+          "attr": {
+            "position": [220, 20, 1],
+            "style": {
+              "backgroundColor": "#E8F0FE",
+              "color": "#174EA6",
+              "fontSize": 16,
+              "fontFamily": "Arial, sans-serif",
+              "fontMultiplier": 1.1,
+              "width": 180,
+              "height": 64
+            },
+            "stickers": ["emoji:1F4CC"]
+          },
+          "ideas": {
+            "1": {
+              "id": "idea-guia",
+              "title": "Guía sintética: https://docs.example.com/guia-sintetica",
+              "attr": {
+                "position": [420, 20, 1],
+                "style": {
+                  "backgroundColor": "#FFFFFF",
+                  "color": "#202124",
+                  "fontSize": 14
+                },
+                "icon": {
+                  "type": "image",
+                  "size": 48,
+                  "url": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=",
+                  "width": 16,
+                  "height": 16,
+                  "position": "center"
+                }
+              },
+              "ideas": {}
+            },
+            "2": {
+              "id": "idea-referencias",
+              "title": "Referencias externas: https://example.org/recursos-sinteticos",
+              "attr": {
+                "position": [420, 100, 1]
+              },
+              "ideas": {}
+            }
+          }
+        },
+        "3": {
+          "id": "idea-recursos",
+          "title": "Recursos del equipo",
+          "attr": {
+            "position": [220, 160, 1],
+            "style": {
+              "backgroundColor": "#FEF7E0",
+              "color": "#B06000",
+              "fontSize": 16,
+              "bold": true,
+              "strikethrough": false,
+              "width": 160,
+              "height": 56
+            },
+            "collapsed": false
+          },
+          "ideas": {
+            "1": {
+              "id": "idea-plantillas",
+              "title": "Plantillas descargables",
+              "attr": {
+                "position": [420, 160, 1]
+              },
+              "ideas": {}
+            },
+            "2": {
+              "id": "idea-contacto",
+              "title": "Contacto: mailto:equipo@example.org",
+              "attr": {
+                "position": [420, 240, 1]
+              },
+              "ideas": {}
+            }
+          }
+        },
+        "4": {
+          "id": "idea-revision",
+          "title": "Revisión final",
+          "attr": {
+            "position": [220, 300, 1],
+            "style": {
+              "backgroundColor": "#E8F0FE",
+              "color": "#174EA6",
+              "fontSize": 16,
+              "italic": true
+            },
+            "parentConnector": {
+              "width": 2,
+              "color": "#3366CC",
+              "arrow": "to"
+            }
+          },
+          "ideas": {
+            "1": {
+              "id": "idea-cierre",
+              "title": "Cierre y entrega",
+              "attr": {
+                "position": [420, 300, 1],
+                "collapsed": true
+              },
+              "ideas": {}
+            }
+          }
+        }
+      }
+    }
+  },
+  "links": [
+    {
+      "id": "enlace-sintetico-1",
+      "ideaIdFrom": "idea-planificacion",
+      "ideaIdTo": "idea-hitos",
+      "attr": {
+        "style": {
+          "color": "#3366CC",
+          "lineStyle": "solid",
+          "arrow": "to",
+          "width": 2
+        }
+      }
+    }
+  ]
+}

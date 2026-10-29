@@ -1,0 +1,54 @@
+{
+  // Nombre del Worker de visualización. Sustituye el placeholder por el nombre
+  // definitivo del proyecto antes de desplegar.
+  "name": "{{NOMBRE_WORKER_VISUALIZADOR}}",
+
+  // Worker interno: sin URL pública en workers.dev. Pages lo invoca mediante
+  // un service binding.
+  "workers_dev": false,
+  "preview_urls": false,
+  "main": "src/visualizer/index.js",
+  "compatibility_date": "2026-10-23",
+  "observability": {
+    "enabled": true
+  },
+  // Usa --keep-vars al desplegar para conservar las variables del panel.
+
+  // Binding del Durable Object que ejecuta el pipeline de visualización.
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "MMUP_VISOR_DO",
+        "class_name": "MupVisualizer"
+      }
+    ]
+  },
+
+  // Migración del Durable Object de este Worker.
+  // Sustituye {{MIGRATION_TAG}} por una etiqueta literal fija (por ejemplo,
+  // init) antes del primer despliegue y aplica new_sqlite_classes una sola vez.
+  // No reutilices una migración ya aplicada de otro proyecto: el historial es
+  // acumulativo y sus operaciones no se pueden volver a aplicar.
+  "migrations": [
+    {
+      "tag": "{{MIGRATION_TAG}}",
+      "new_sqlite_classes": ["MupVisualizer"]
+    }
+  ],
+
+  // Espacio de almacenamiento clave-valor con el documento de variables.
+  "kv_namespaces": [
+    {
+      "binding": "VARIABLES_KV",
+      "id": "{{KV_VARIABLES_ID}}"
+    }
+  ],
+
+  // Cubo R2 compartido con el Worker de conversión y Pages.
+  "r2_buckets": [
+    {
+      "binding": "MMUP_BUCKET",
+      "bucket_name": "{{NOMBRE_CUBO_R2}}"
+    }
+  ]
+}

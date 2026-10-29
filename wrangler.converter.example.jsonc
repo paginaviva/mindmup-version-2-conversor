@@ -1,0 +1,64 @@
+{
+  // Nombre del Worker de conversión. Sustituye el placeholder por el nombre
+  // definitivo del proyecto antes de desplegar.
+  "name": "{{NOMBRE_WORKER_CONVERSOR}}",
+
+  // Worker interno: sin URL pública en workers.dev. Pages lo invoca mediante
+  // un service binding.
+  "workers_dev": false,
+  "preview_urls": false,
+  "main": "src/converter/index.js",
+  "compatibility_date": "2026-10-23",
+  "observability": {
+    "enabled": true
+  },
+
+  // Limpieza horaria de objetos temporales caducados.
+  "triggers": {
+    "crons": ["0 * * * *"]
+  },
+  // Usa --keep-vars al desplegar para conservar las variables del panel.
+
+  // Binding del Durable Object que ejecuta el pipeline de conversión.
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "MMUP_CONVERT_DO",
+        "class_name": "MupConverter"
+      }
+    ]
+  },
+
+  // Migración del Durable Object de este Worker.
+  // Sustituye {{MIGRATION_TAG}} por una etiqueta literal fija (por ejemplo,
+  // init) antes del primer despliegue y aplica new_sqlite_classes una sola vez.
+  // No reutilices una migración ya aplicada de otro proyecto: el historial es
+  // acumulativo y sus operaciones no se pueden volver a aplicar.
+  "migrations": [
+    {
+      "tag": "{{MIGRATION_TAG}}",
+      "new_sqlite_classes": ["MupConverter"]
+    }
+  ],
+
+  // Cubo R2 para originales temporales y resultados.
+  "r2_buckets": [
+    {
+      "binding": "MMUP_BUCKET",
+      "bucket_name": "{{NOMBRE_CUBO_R2}}"
+    }
+  ],
+
+  // Espacios de almacenamiento clave-valor. Sustituye cada ID por el de la
+  // cuenta donde se despliegue el proyecto.
+  "kv_namespaces": [
+    {
+      "binding": "CONFIG_KV",
+      "id": "{{KV_CONFIG_ID}}"
+    },
+    {
+      "binding": "VARIABLES_KV",
+      "id": "{{KV_VARIABLES_ID}}"
+    }
+  ]
+}

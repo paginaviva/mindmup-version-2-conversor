@@ -1,0 +1,278 @@
+{
+  "metadata": {
+    "map_id": "mapa-sintetico-minimo",
+    "title": "Mapa sintético mínimo de ejemplo",
+    "format_version": 3,
+    "author": "Equipo sintético de pruebas",
+    "created_at": "2026-01-15T10:00:00.000Z",
+    "updated_at": "2026-01-15T10:00:00.000Z",
+    "source_file": "valido-minimo.mup",
+    "converted_at": "2000-01-01T00:00:00.000Z",
+    "node_count": 10
+  },
+  "nodes": [
+    {
+      "node_id": "00000000-0000-4000-8000-000000000001",
+      "map_id": "mapa-sintetico-minimo",
+      "parent_id": null,
+      "sort_key": "1",
+      "title": "Nodo raíz del mapa mínimo",
+      "depth": 0,
+      "sibling_order": 0,
+      "path": [
+        "00000000-0000-4000-8000-000000000001"
+      ],
+      "original_id": "idea-raiz-minimo",
+      "is_leaf": false
+    },
+    {
+      "node_id": "00000000-0000-4000-8000-000000000002",
+      "map_id": "mapa-sintetico-minimo",
+      "parent_id": "00000000-0000-4000-8000-000000000001",
+      "sort_key": "1",
+      "title": "Hoja 1: introducción sintética al mapa",
+      "depth": 1,
+      "sibling_order": 0,
+      "path": [
+        "00000000-0000-4000-8000-000000000001",
+        "00000000-0000-4000-8000-000000000002"
+      ],
+      "original_id": "idea-hoja-minimo-1",
+      "is_leaf": true
+    },
+    {
+      "node_id": "00000000-0000-4000-8000-000000000003",
+      "map_id": "mapa-sintetico-minimo",
+      "parent_id": "00000000-0000-4000-8000-000000000001",
+      "sort_key": "2",
+      "title": "Hoja 2: objetivos inventados del ejemplo",
+      "depth": 1,
+      "sibling_order": 1,
+      "path": [
+        "00000000-0000-4000-8000-000000000001",
+        "00000000-0000-4000-8000-000000000003"
+      ],
+      "original_id": "idea-hoja-minimo-2",
+      "is_leaf": true
+    },
+    {
+      "node_id": "00000000-0000-4000-8000-000000000004",
+      "map_id": "mapa-sintetico-minimo",
+      "parent_id": "00000000-0000-4000-8000-000000000001",
+      "sort_key": "3",
+      "title": "Hoja 3: alcance ficticio de la prueba",
+      "depth": 1,
+      "sibling_order": 2,
+      "path": [
+        "00000000-0000-4000-8000-000000000001",
+        "00000000-0000-4000-8000-000000000004"
+      ],
+      "original_id": "idea-hoja-minimo-3",
+      "is_leaf": true
+    },
+    {
+      "node_id": "00000000-0000-4000-8000-000000000005",
+      "map_id": "mapa-sintetico-minimo",
+      "parent_id": "00000000-0000-4000-8000-000000000001",
+      "sort_key": "4",
+      "title": "Hoja 4: recursos simulados del equipo",
+      "depth": 1,
+      "sibling_order": 3,
+      "path": [
+        "00000000-0000-4000-8000-000000000001",
+        "00000000-0000-4000-8000-000000000005"
+      ],
+      "original_id": "idea-hoja-minimo-4",
+      "is_leaf": true
+    },
+    {
+      "node_id": "00000000-0000-4000-8000-000000000006",
+      "map_id": "mapa-sintetico-minimo",
+      "parent_id": "00000000-0000-4000-8000-000000000001",
+      "sort_key": "5",
+      "title": "Hoja 5: calendario imaginario del plan",
+      "depth": 1,
+      "sibling_order": 4,
+      "path": [
+        "00000000-0000-4000-8000-000000000001",
+        "00000000-0000-4000-8000-000000000006"
+      ],
+      "original_id": "idea-hoja-minimo-5",
+      "is_leaf": true
+    },
+    {
+      "node_id": "00000000-0000-4000-8000-000000000007",
+      "map_id": "mapa-sintetico-minimo",
+      "parent_id": "00000000-0000-4000-8000-000000000001",
+      "sort_key": "6",
+      "title": "Hoja 6: riesgos inventados del ejercicio",
+      "depth": 1,
+      "sibling_order": 5,
+      "path": [
+        "00000000-0000-4000-8000-000000000001",
+        "00000000-0000-4000-8000-000000000007"
+      ],
+      "original_id": "idea-hoja-minimo-6",
+      "is_leaf": true
+    },
+    {
+      "node_id": "00000000-0000-4000-8000-000000000008",
+      "map_id": "mapa-sintetico-minimo",
+      "parent_id": "00000000-0000-4000-8000-000000000001",
+      "sort_key": "7",
+      "title": "Hoja 7: revisión ficticia de resultados",
+      "depth": 1,
+      "sibling_order": 6,
+      "path": [
+        "00000000-0000-4000-8000-000000000001",
+        "00000000-0000-4000-8000-000000000008"
+      ],
+      "original_id": "idea-hoja-minimo-7",
+      "is_leaf": true
+    },
+    {
+      "node_id": "00000000-0000-4000-8000-000000000009",
+      "map_id": "mapa-sintetico-minimo",
+      "parent_id": "00000000-0000-4000-8000-000000000001",
+      "sort_key": "8",
+      "title": "Hoja 8: cierre simulado de la prueba",
+      "depth": 1,
+      "sibling_order": 7,
+      "path": [
+        "00000000-0000-4000-8000-000000000001",
+        "00000000-0000-4000-8000-000000000009"
+      ],
+      "original_id": "idea-hoja-minimo-8",
+      "is_leaf": true
+    },
+    {
+      "node_id": "00000000-0000-4000-8000-000000000010",
+      "map_id": "mapa-sintetico-minimo",
+      "parent_id": "00000000-0000-4000-8000-000000000001",
+      "sort_key": "9",
+      "title": "Hoja 9: anexo sintético sin datos reales",
+      "depth": 1,
+      "sibling_order": 8,
+      "path": [
+        "00000000-0000-4000-8000-000000000001",
+        "00000000-0000-4000-8000-000000000010"
+      ],
+      "original_id": "idea-hoja-minimo-9",
+      "is_leaf": true
+    }
+  ],
+  "notes": [],
+  "attributes": [
+    {
+      "attr_id": "20000000-0000-4000-8000-000000000001",
+      "node_id": "00000000-0000-4000-8000-000000000001",
+      "attr_type": "node_attributes",
+      "value": {},
+      "raw_attributes": null
+    },
+    {
+      "attr_id": "20000000-0000-4000-8000-000000000002",
+      "node_id": "00000000-0000-4000-8000-000000000002",
+      "attr_type": "node_attributes",
+      "value": {},
+      "raw_attributes": null
+    },
+    {
+      "attr_id": "20000000-0000-4000-8000-000000000003",
+      "node_id": "00000000-0000-4000-8000-000000000003",
+      "attr_type": "node_attributes",
+      "value": {},
+      "raw_attributes": null
+    },
+    {
+      "attr_id": "20000000-0000-4000-8000-000000000004",
+      "node_id": "00000000-0000-4000-8000-000000000004",
+      "attr_type": "node_attributes",
+      "value": {},
+      "raw_attributes": null
+    },
+    {
+      "attr_id": "20000000-0000-4000-8000-000000000005",
+      "node_id": "00000000-0000-4000-8000-000000000005",
+      "attr_type": "node_attributes",
+      "value": {},
+      "raw_attributes": null
+    },
+    {
+      "attr_id": "20000000-0000-4000-8000-000000000006",
+      "node_id": "00000000-0000-4000-8000-000000000006",
+      "attr_type": "node_attributes",
+      "value": {},
+      "raw_attributes": null
+    },
+    {
+      "attr_id": "20000000-0000-4000-8000-000000000007",
+      "node_id": "00000000-0000-4000-8000-000000000007",
+      "attr_type": "node_attributes",
+      "value": {},
+      "raw_attributes": null
+    },
+    {
+      "attr_id": "20000000-0000-4000-8000-000000000008",
+      "node_id": "00000000-0000-4000-8000-000000000008",
+      "attr_type": "node_attributes",
+      "value": {},
+      "raw_attributes": null
+    },
+    {
+      "attr_id": "20000000-0000-4000-8000-000000000009",
+      "node_id": "00000000-0000-4000-8000-000000000009",
+      "attr_type": "node_attributes",
+      "value": {},
+      "raw_attributes": null
+    },
+    {
+      "attr_id": "20000000-0000-4000-8000-000000000010",
+      "node_id": "00000000-0000-4000-8000-000000000010",
+      "attr_type": "node_attributes",
+      "value": {},
+      "raw_attributes": null
+    }
+  ],
+  "stickers": [],
+  "icons": [],
+  "links": [],
+  "externalRefs": [],
+  "enums": [],
+  "indexes": [
+    {
+      "index_id": "idx_all_nodes",
+      "name": "Todos los nodos",
+      "type": "select",
+      "query": {},
+      "description": "Todos los nodos del mapa"
+    },
+    {
+      "index_id": "idx_root_nodes",
+      "name": "Nodos raíz",
+      "type": "select",
+      "query": {
+        "depth": 0
+      },
+      "description": "Nodos raíz del mapa (depth=0)"
+    },
+    {
+      "index_id": "idx_leaf_nodes",
+      "name": "Nodos hoja",
+      "type": "select",
+      "query": {
+        "is_leaf": true
+      },
+      "description": "Nodos hoja (sin hijos)"
+    },
+    {
+      "index_id": "idx_parent_nodes",
+      "name": "Nodos padre",
+      "type": "select",
+      "query": {
+        "is_leaf": false
+      },
+      "description": "Nodos padre (con hijos)"
+    }
+  ]
+}

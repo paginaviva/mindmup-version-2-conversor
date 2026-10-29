@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Conversor de mapas MindMup a JSON CMJN y visualizador de resultados.">
+  <title>Conversor MMUP</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Saltar al contenido principal</a>
+
+  <header class="site-header">
+    <div class="site-header__inner">
+      <h1>Conversor MMUP</h1>
+      <p class="site-subtitle">Convierte mapas MindMup en JSON CMJN y visualiza el resultado.</p>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <noscript>
+      <p class="form-error">Esta interfaz necesita JavaScript para iniciar sesión, subir archivos y mostrar el catálogo.</p>
+    </noscript>
+
+    <section id="login-view" class="panel panel--narrow" aria-labelledby="login-heading">
+      <h2 id="login-heading">Acceso restringido</h2>
+      <p class="section-intro">Introduce tus credenciales para acceder al catálogo.</p>
+      <form id="login-form">
+        <div class="form-field">
+          <label for="login-user">Usuario</label>
+          <input type="text" id="login-user" name="user" autocomplete="username" required>
+        </div>
+        <div class="form-field">
+          <label for="login-password">Contraseña</label>
+          <input type="password" id="login-password" name="password" autocomplete="current-password" required>
+        </div>
+        <button type="submit" class="button">Entrar</button>
+        <p id="login-error" class="form-error" role="alert" aria-live="assertive" hidden></p>
+      </form>
+    </section>
+
+    <section id="content-view" hidden>
+      <div class="content-header">
+        <h2>Panel de conversión</h2>
+        <button type="button" id="logout-btn" class="button button--secondary">Cerrar sesión</button>
+      </div>
+
+      <section id="upload-view" class="panel" aria-labelledby="upload-heading">
+        <h3 id="upload-heading">Subir un mapa</h3>
+        <p class="section-intro" id="upload-hint">Selecciona un archivo <code>.mup</code> y conviértelo a JSON CMJN.</p>
+        <form id="upload-form" enctype="multipart/form-data">
+          <div class="form-field">
+            <label for="upload-file">Archivo .mup</label>
+            <input type="file" id="upload-file" name="file" accept=".mup" aria-describedby="upload-hint" required>
+          </div>
+          <div id="turnstile-container" class="turnstile-container"></div>
+          <button type="submit" id="upload-submit" class="button">Convertir mapa</button>
+          <p id="upload-status" class="status" role="status" aria-live="polite"></p>
+          <progress id="upload-progress" class="progress" max="100" value="0" hidden>0 %</progress>
+        </form>
+      </section>
+
+      <section id="catalogue-view" class="panel" aria-labelledby="catalogue-heading">
+        <h3 id="catalogue-heading">Catálogo</h3>
+        <p class="section-intro">Busca y filtra los mapas ya convertidos.</p>
+        <div class="catalogue-controls">
+          <div class="form-field">
+            <label for="search-input">Buscar por nombre</label>
+            <input type="search" id="search-input" name="search" autocomplete="off" placeholder="Nombre del mapa">
+          </div>
+          <div class="form-field">
+            <label for="group-filter">Grupo</label>
+            <select id="group-filter" name="group">
+              <option value="">Todos</option>
+            </select>
+          </div>
+        </div>
+        <p id="catalogue-count" class="status" role="status" aria-live="polite"></p>
+        <div class="table-wrapper">
+          <table id="catalogue-table" class="catalogue-table">
+            <caption>Conversiones disponibles</caption>
+            <thead>
+              <tr>
+                <th scope="col" class="col-name"><button type="button" class="sort-button" data-sort-key="name">Nombre MMAP</button></th>
+                <th scope="col" class="col-group"><button type="button" class="sort-button" data-sort-key="group">Grupo</button></th>
+                <th scope="col" class="col-date"><button type="button" class="sort-button" data-sort-key="date">Fecha conversión</button></th>
+                <th scope="col" class="col-nodes"><button type="button" class="sort-button" data-sort-key="nodes">Nodos</button></th>
+                <th scope="col" class="col-version"><button type="button" class="sort-button" data-sort-key="version">Versión conversor</button></th>
+                <th scope="col" class="col-action">Visualizar</th>
+              </tr>
+            </thead>
+            <tbody id="catalogue-body"></tbody>
+          </table>
+        </div>
+        <p id="catalogue-empty" class="empty-state" role="status" aria-live="polite" hidden>No hay mapas que coincidan con la búsqueda.</p>
+      </section>
+
+      <section id="result-view" class="panel" aria-labelledby="result-title" hidden>
+        <h3 id="result-title">Resultado</h3>
+        <p class="section-intro">Vista previa del mapa convertido.</p>
+        <iframe id="result-frame" class="result-frame" title="Visualización del mapa convertido" loading="lazy" referrerpolicy="no-referrer"></iframe>
+        <div class="result-actions">
+          <button type="button" id="result-download-html" class="button button--secondary">Descargar HTML</button>
+          <a id="result-download" class="button button--secondary" href="#" download hidden>Descargar JSON</a>
+          <button type="button" id="result-new" class="button">Convertir otro mapa</button>
+        </div>
+        <p id="result-warning" class="result-warning" role="status" aria-live="polite" hidden></p>
+        <p id="result-expiry" class="result-meta"></p>
+      </section>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Conversor MMUP. Los archivos se procesan en el servidor y no se comparten con terceros salvo el servicio antiabuso de Cloudflare, si está activado.</p>
+  </footer>
+
+  <script src="app.js" defer></script>
+</body>
+</html>

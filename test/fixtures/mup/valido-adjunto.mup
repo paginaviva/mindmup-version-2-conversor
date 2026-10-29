@@ -1,0 +1,104 @@
+{
+  "formatVersion": 3,
+  "id": "mapa-sintetico-adjunto",
+  "title": "Mapa sintético con adjuntos de ejemplo",
+  "author": "Equipo sintético de pruebas",
+  "created": 1768471200,
+  "updated": 1768471200,
+  "ideas": {
+    "1": {
+      "id": "idea-raiz-adjunto",
+      "title": "Nodo raíz con adjuntos sintéticos",
+      "attr": {
+        "position": [0, 0, 1],
+        "style": {
+          "backgroundColor": "#FFF4E6",
+          "color": "#1F2933",
+          "fontSize": 18,
+          "bold": true
+        }
+      },
+      "ideas": {
+        "1": {
+          "id": "idea-documentos",
+          "title": "Documentos adjuntos del ejemplo",
+          "attr": {
+            "position": [220, -60, 1],
+            "style": {
+              "backgroundColor": "#E8F0FE",
+              "color": "#174EA6",
+              "fontSize": 16
+            }
+          },
+          "ideas": {
+            "1": {
+              "id": "idea-texto",
+              "title": "Adjunto de texto sintético",
+              "attr": {
+                "position": [420, -60, 1],
+                "style": {
+                  "backgroundColor": "#E6F4EA",
+                  "color": "#137333",
+                  "fontSize": 14
+                },
+                "attachment": {
+                  "name": "adjunto-sintetico.txt",
+                  "contentType": "text/plain",
+                  "dataUriEncoded": true,
+                  "content": "data:text/plain;base64,QWRqdW50byBzaW50w6l0aWNvIGRlIHBydWViYS4KQ29udGVuaWRvIGludmVudGFkbyB5IHNlZ3Vyby4K"
+                }
+              },
+              "ideas": {}
+            },
+            "2": {
+              "id": "idea-imagen",
+              "title": "Imagen de ejemplo adjunta",
+              "attr": {
+                "position": [420, 20, 1],
+                "style": {
+                  "backgroundColor": "#FCE8E6",
+                  "color": "#A50E0E",
+                  "fontSize": 14
+                },
+                "attachment": {
+                  "name": "pixel-sintetico.png",
+                  "contentType": "image/png",
+                  "dataUriEncoded": true,
+                  "content": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII="
+                }
+              },
+              "ideas": {}
+            }
+          }
+        },
+        "2": {
+          "id": "idea-referencias-adjunto",
+          "title": "Referencias del adjunto",
+          "attr": {
+            "position": [220, 100, 1],
+            "style": {
+              "backgroundColor": "#FEF7E0",
+              "color": "#B06000",
+              "fontSize": 16
+            }
+          },
+          "ideas": {
+            "1": {
+              "id": "idea-cierre-adjunto",
+              "title": "Cierre del ejemplo con adjuntos",
+              "attr": {
+                "position": [420, 100, 1],
+                "style": {
+                  "backgroundColor": "#FFFFFF",
+                  "color": "#202124",
+                  "fontSize": 14
+                }
+              },
+              "ideas": {}
+            }
+          }
+        }
+      }
+    }
+  }
+}

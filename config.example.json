@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "loginEnabled": false,
+  "catalogEnabled": false,
+  "loginUser": "{{LOGIN_USER}}",
+  "sessionTtlMinutes": 1440,
+  "anonymousRetentionHours": 24,
+  "maxUploadBytes": 16777216,
+  "minUploadBytes": 1024,
+  "rateLimit": {
+    "windowSeconds": 600,
+    "maxRequestsPerWindow": 2,
+    "maxRequestsPerDay": 10,
+    "maxConcurrent": 1,
+    "appliesToAuthenticated": false
+  },
+  "loginMaxAttempts": 5,
+  "loginWindowSeconds": 600,
+  "allowedOrigins": [],
+  "configCacheSeconds": 60,
+  "conversionTimeoutSeconds": 120,
+  "htmlCacheSeconds": 0,
+  "local": {
+    "inputDir": "./input",
+    "outputDir": "./output"
+  },
+  "turnstileEnabled": false,
+  "turnstileSiteKey": "{{TURNSTILE_SITE_KEY}}"
+}

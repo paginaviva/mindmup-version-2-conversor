@@ -1,0 +1,50 @@
+{
+  // Proyecto de Cloudflare Pages que sirve la interfaz estática y las Functions.
+  "name": "{{PAGES_PROJECT}}",
+
+  // Assets estáticos en ./app. Las Functions se leen de ./functions por
+  // convención de Pages.
+  "pages_build_output_dir": "./app",
+
+  // Misma fecha de compatibilidad que los Workers del proyecto.
+  "compatibility_date": "2026-10-23",
+
+  // Espacios de almacenamiento clave-valor. Sustituye cada ID por el de la
+  // cuenta donde se despliegue el proyecto.
+  "kv_namespaces": [
+    {
+      "binding": "CONFIG_KV",
+      "id": "{{KV_CONFIG_ID}}"
+    },
+    {
+      "binding": "VARIABLES_KV",
+      "id": "{{KV_VARIABLES_ID}}"
+    }
+  ],
+
+  // Cubo R2 compartido con los dos Workers.
+  "r2_buckets": [
+    {
+      "binding": "MMUP_BUCKET",
+      "bucket_name": "{{NOMBRE_CUBO_R2}}"
+    }
+  ],
+
+  // Service bindings a los dos Workers internos del repositorio.
+  "services": [
+    {
+      "binding": "CONVERTER",
+      "service": "{{NOMBRE_WORKER_CONVERSOR}}"
+    },
+    {
+      "binding": "VISUALIZER",
+      "service": "{{NOMBRE_WORKER_VISUALIZADOR}}"
+    }
+  ]
+
+  // Los secretos no se declaran en este archivo. Defínelos por proyecto con:
+  //   npx -y wrangler@4 pages secret put ADMIN_PASSWORD_HASH --project-name {{PAGES_PROJECT}}
+  // Repite para ADMIN_PASSWORD_SALT, ADMIN_PASSWORD_ITERATIONS,
+  // INTERNAL_SHARED_SECRET y, solo si se activa la protección antiabuso,
+  // TURNSTILE_SECRET_KEY.
+}

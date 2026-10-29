@@ -1,0 +1,783 @@
+{
+  "metadata": {
+    "map_id": "mapa-sintetico-completo",
+    "title": "Mapa sintético completo de ejemplo",
+    "format_version": 3,
+    "author": "Equipo sintético de pruebas",
+    "created_at": "2026-01-15T10:00:00.000Z",
+    "updated_at": "2026-01-15T10:00:00.000Z",
+    "theme": "default",
+    "themeOverrides": {
+      "canvas": {
+        "backgroundColor": "#efe9e3"
+      }
+    },
+    "source_file": "valido-completo.mup",
+    "converted_at": "2000-01-01T00:00:00.000Z",
+    "node_count": 12
+  },
+  "nodes": [
+    {
+      "node_id": "00000000-0000-4000-8000-000000000001",
+      "map_id": "mapa-sintetico-completo",
+      "parent_id": null,
+      "sort_key": "1",
+      "title": "Mapa sintético completo",
+      "depth": 0,
+      "sibling_order": 0,
+      "path": [
+        "00000000-0000-4000-8000-000000000001"
+      ],
+      "original_id": "idea-raiz-completo",
+      "is_leaf": false
+    },
+    {
+      "node_id": "00000000-0000-4000-8000-000000000002",
+      "map_id": "mapa-sintetico-completo",
+      "parent_id": "00000000-0000-4000-8000-000000000001",
+      "sort_key": "1",
+      "title": "Planificación del proyecto",
+      "depth": 1,
+      "sibling_order": 0,
+      "path": [
+        "00000000-0000-4000-8000-000000000001",
+        "00000000-0000-4000-8000-000000000002"
+      ],
+      "original_id": "idea-planificacion",
+      "is_leaf": false
+    },
+    {
+      "node_id": "00000000-0000-4000-8000-000000000003",
+      "map_id": "mapa-sintetico-completo",
+      "parent_id": "00000000-0000-4000-8000-000000000002",
+      "sort_key": "1",
+      "title": "Objetivos y alcance",
+      "depth": 2,
+      "sibling_order": 0,
+      "path": [
+        "00000000-0000-4000-8000-000000000001",
+        "00000000-0000-4000-8000-000000000002",
+        "00000000-0000-4000-8000-000000000003"
+      ],
+      "original_id": "idea-objetivos",
+      "is_leaf": true
+    },
+    {
+      "node_id": "00000000-0000-4000-8000-000000000004",
+      "map_id": "mapa-sintetico-completo",
+      "parent_id": "00000000-0000-4000-8000-000000000002",
+      "sort_key": "2",
+      "title": "Hitos principales",
+      "depth": 2,
+      "sibling_order": 1,
+      "path": [
+        "00000000-0000-4000-8000-000000000001",
+        "00000000-0000-4000-8000-000000000002",
+        "00000000-0000-4000-8000-000000000004"
+      ],
+      "original_id": "idea-hitos",
+      "is_leaf": true
+    },
+    {
+      "node_id": "00000000-0000-4000-8000-000000000005",
+      "map_id": "mapa-sintetico-completo",
+      "parent_id": "00000000-0000-4000-8000-000000000001",
+      "sort_key": "2",
+      "title": "Documentación y guías",
+      "depth": 1,
+      "sibling_order": 1,
+      "path": [
+        "00000000-0000-4000-8000-000000000001",
+        "00000000-0000-4000-8000-000000000005"
+      ],
+      "original_id": "idea-documentacion",
+      "is_leaf": false
+    },
+    {
+      "node_id": "00000000-0000-4000-8000-000000000006",
+      "map_id": "mapa-sintetico-completo",
+      "parent_id": "00000000-0000-4000-8000-000000000005",
+      "sort_key": "1",
+      "title": "Guía sintética: https://docs.example.com/guia-sintetica",
+      "depth": 2,
+      "sibling_order": 0,
+      "path": [
+        "00000000-0000-4000-8000-000000000001",
+        "00000000-0000-4000-8000-000000000005",
+        "00000000-0000-4000-8000-000000000006"
+      ],
+      "original_id": "idea-guia",
+      "is_leaf": true
+    },
+    {
+      "node_id": "00000000-0000-4000-8000-000000000007",
+      "map_id": "mapa-sintetico-completo",
+      "parent_id": "00000000-0000-4000-8000-000000000005",
+      "sort_key": "2",
+      "title": "Referencias externas: https://example.org/recursos-sinteticos",
+      "depth": 2,
+      "sibling_order": 1,
+      "path": [
+        "00000000-0000-4000-8000-000000000001",
+        "00000000-0000-4000-8000-000000000005",
+        "00000000-0000-4000-8000-000000000007"
+      ],
+      "original_id": "idea-referencias",
+      "is_leaf": true
+    },
+    {
+      "node_id": "00000000-0000-4000-8000-000000000008",
+      "map_id": "mapa-sintetico-completo",
+      "parent_id": "00000000-0000-4000-8000-000000000001",
+      "sort_key": "3",
+      "title": "Recursos del equipo",
+      "depth": 1,
+      "sibling_order": 2,
+      "path": [
+        "00000000-0000-4000-8000-000000000001",
+        "00000000-0000-4000-8000-000000000008"
+      ],
+      "original_id": "idea-recursos",
+      "is_leaf": false
+    },
+    {
+      "node_id": "00000000-0000-4000-8000-000000000009",
+      "map_id": "mapa-sintetico-completo",
+      "parent_id": "00000000-0000-4000-8000-000000000008",
+      "sort_key": "1",
+      "title": "Plantillas descargables",
+      "depth": 2,
+      "sibling_order": 0,
+      "path": [
+        "00000000-0000-4000-8000-000000000001",
+        "00000000-0000-4000-8000-000000000008",
+        "00000000-0000-4000-8000-000000000009"
+      ],
+      "original_id": "idea-plantillas",
+      "is_leaf": true
+    },
+    {
+      "node_id": "00000000-0000-4000-8000-000000000010",
+      "map_id": "mapa-sintetico-completo",
+      "parent_id": "00000000-0000-4000-8000-000000000008",
+      "sort_key": "2",
+      "title": "Contacto: mailto:equipo@example.org",
+      "depth": 2,
+      "sibling_order": 1,
+      "path": [
+        "00000000-0000-4000-8000-000000000001",
+        "00000000-0000-4000-8000-000000000008",
+        "00000000-0000-4000-8000-000000000010"
+      ],
+      "original_id": "idea-contacto",
+      "is_leaf": true
+    },
+    {
+      "node_id": "00000000-0000-4000-8000-000000000011",
+      "map_id": "mapa-sintetico-completo",
+      "parent_id": "00000000-0000-4000-8000-000000000001",
+      "sort_key": "4",
+      "title": "Revisión final",
+      "depth": 1,
+      "sibling_order": 3,
+      "path": [
+        "00000000-0000-4000-8000-000000000001",
+        "00000000-0000-4000-8000-000000000011"
+      ],
+      "original_id": "idea-revision",
+      "is_leaf": false
+    },
+    {
+      "node_id": "00000000-0000-4000-8000-000000000012",
+      "map_id": "mapa-sintetico-completo",
+      "parent_id": "00000000-0000-4000-8000-000000000011",
+      "sort_key": "1",
+      "title": "Cierre y entrega",
+      "depth": 2,
+      "sibling_order": 0,
+      "path": [
+        "00000000-0000-4000-8000-000000000001",
+        "00000000-0000-4000-8000-000000000011",
+        "00000000-0000-4000-8000-000000000012"
+      ],
+      "original_id": "idea-cierre",
+      "is_leaf": true
+    }
+  ],
+  "notes": [
+    {
+      "note_id": "10000000-0000-4000-8000-000000000001",
+      "node_id": "00000000-0000-4000-8000-000000000002",
+      "index": 0,
+      "text": "Nota corta sintética para la planificación.",
+      "char_count": 43,
+      "truncated": false
+    },
+    {
+      "note_id": "10000000-0000-4000-8000-000000000002",
+      "node_id": "00000000-0000-4000-8000-000000000004",
+      "index": 1,
+      "text": "Nota larga sintética con varias líneas.\nLínea dos: contenido inventado para el visor.\nLínea tres: sin datos reales ni rutas privadas.",
+      "char_count": 133,
+      "truncated": false
+    }
+  ],
+  "attributes": [
+    {
+      "attr_id": "20000000-0000-4000-8000-000000000001",
+      "node_id": "00000000-0000-4000-8000-000000000001",
+      "attr_type": "node_attributes",
+      "value": {
+        "position": {
+          "x": 0,
+          "y": 0,
+          "z": 1
+        },
+        "style": {
+          "backgroundColor": "#FFF4E6",
+          "color": "#1F2933",
+          "fontSize": 18,
+          "bold": true,
+          "textAlign": "center"
+        },
+        "collapsed": false,
+        "shape": "rounded",
+        "borderStyle": "solid",
+        "borderColor": "#3366CC",
+        "borderWidth": 2
+      },
+      "raw_attributes": {
+        "position": [
+          0,
+          0,
+          1
+        ],
+        "style": {
+          "backgroundColor": "#FFF4E6",
+          "color": "#1F2933",
+          "fontSize": 18,
+          "bold": true,
+          "textAlign": "center"
+        },
+        "collapsed": false,
+        "shape": "rounded",
+        "borderStyle": "solid",
+        "borderColor": "#3366CC",
+        "borderWidth": 2
+      }
+    },
+    {
+      "attr_id": "20000000-0000-4000-8000-000000000002",
+      "node_id": "00000000-0000-4000-8000-000000000002",
+      "attr_type": "node_attributes",
+      "value": {
+        "position": {
+          "x": 220,
+          "y": -120,
+          "z": 1
+        },
+        "style": {
+          "backgroundColor": "#E8F0FE",
+          "color": "#174EA6",
+          "fontSize": 16,
+          "italic": true,
+          "textAlign": "left"
+        }
+      },
+      "raw_attributes": {
+        "position": [
+          220,
+          -120,
+          1
+        ],
+        "style": {
+          "backgroundColor": "#E8F0FE",
+          "color": "#174EA6",
+          "fontSize": 16,
+          "italic": true,
+          "textAlign": "left"
+        },
+        "note": {
+          "index": 0,
+          "text": "Nota corta sintética para la planificación."
+        }
+      }
+    },
+    {
+      "attr_id": "20000000-0000-4000-8000-000000000003",
+      "node_id": "00000000-0000-4000-8000-000000000003",
+      "attr_type": "node_attributes",
+      "value": {
+        "position": {
+          "x": 420,
+          "y": -160,
+          "z": 1
+        },
+        "style": {
+          "backgroundColor": "#E6F4EA",
+          "color": "#137333",
+          "fontSize": 14,
+          "bold": true,
+          "underline": true
+        }
+      },
+      "raw_attributes": {
+        "position": [
+          420,
+          -160,
+          1
+        ],
+        "style": {
+          "backgroundColor": "#E6F4EA",
+          "color": "#137333",
+          "fontSize": 14,
+          "bold": true,
+          "underline": true
+        },
+        "stickers": [
+          "emoji:1F680"
+        ]
+      }
+    },
+    {
+      "attr_id": "20000000-0000-4000-8000-000000000004",
+      "node_id": "00000000-0000-4000-8000-000000000004",
+      "attr_type": "node_attributes",
+      "value": {
+        "position": {
+          "x": 420,
+          "y": -80,
+          "z": 1
+        }
+      },
+      "raw_attributes": {
+        "position": [
+          420,
+          -80,
+          1
+        ],
+        "note": {
+          "index": 1,
+          "text": "Nota larga sintética con varias líneas.\nLínea dos: contenido inventado para el visor.\nLínea tres: sin datos reales ni rutas privadas."
+        }
+      }
+    },
+    {
+      "attr_id": "20000000-0000-4000-8000-000000000005",
+      "node_id": "00000000-0000-4000-8000-000000000005",
+      "attr_type": "node_attributes",
+      "value": {
+        "position": {
+          "x": 220,
+          "y": 20,
+          "z": 1
+        },
+        "width": 180,
+        "height": 64,
+        "style": {
+          "backgroundColor": "#E8F0FE",
+          "color": "#174EA6",
+          "fontSize": 16,
+          "fontMultiplier": 1.1,
+          "fontFamily": "Arial, sans-serif"
+        }
+      },
+      "raw_attributes": {
+        "position": [
+          220,
+          20,
+          1
+        ],
+        "style": {
+          "backgroundColor": "#E8F0FE",
+          "color": "#174EA6",
+          "fontSize": 16,
+          "fontFamily": "Arial, sans-serif",
+          "fontMultiplier": 1.1,
+          "width": 180,
+          "height": 64
+        },
+        "stickers": [
+          "emoji:1F4CC"
+        ]
+      }
+    },
+    {
+      "attr_id": "20000000-0000-4000-8000-000000000006",
+      "node_id": "00000000-0000-4000-8000-000000000006",
+      "attr_type": "node_attributes",
+      "value": {
+        "position": {
+          "x": 420,
+          "y": 20,
+          "z": 1
+        },
+        "style": {
+          "backgroundColor": "#FFFFFF",
+          "color": "#202124",
+          "fontSize": 14
+        },
+        "icon": {
+          "type": "image",
+          "size": 48
+        }
+      },
+      "raw_attributes": {
+        "position": [
+          420,
+          20,
+          1
+        ],
+        "style": {
+          "backgroundColor": "#FFFFFF",
+          "color": "#202124",
+          "fontSize": 14
+        },
+        "icon": {
+          "type": "image",
+          "size": 48,
+          "url": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=",
+          "width": 16,
+          "height": 16,
+          "position": "center"
+        }
+      }
+    },
+    {
+      "attr_id": "20000000-0000-4000-8000-000000000007",
+      "node_id": "00000000-0000-4000-8000-000000000007",
+      "attr_type": "node_attributes",
+      "value": {
+        "position": {
+          "x": 420,
+          "y": 100,
+          "z": 1
+        }
+      },
+      "raw_attributes": {
+        "position": [
+          420,
+          100,
+          1
+        ]
+      }
+    },
+    {
+      "attr_id": "20000000-0000-4000-8000-000000000008",
+      "node_id": "00000000-0000-4000-8000-000000000008",
+      "attr_type": "node_attributes",
+      "value": {
+        "position": {
+          "x": 220,
+          "y": 160,
+          "z": 1
+        },
+        "width": 160,
+        "height": 56,
+        "style": {
+          "backgroundColor": "#FEF7E0",
+          "color": "#B06000",
+          "fontSize": 16,
+          "bold": true,
+          "strikethrough": false
+        },
+        "collapsed": false
+      },
+      "raw_attributes": {
+        "position": [
+          220,
+          160,
+          1
+        ],
+        "style": {
+          "backgroundColor": "#FEF7E0",
+          "color": "#B06000",
+          "fontSize": 16,
+          "bold": true,
+          "strikethrough": false,
+          "width": 160,
+          "height": 56
+        },
+        "collapsed": false
+      }
+    },
+    {
+      "attr_id": "20000000-0000-4000-8000-000000000009",
+      "node_id": "00000000-0000-4000-8000-000000000009",
+      "attr_type": "node_attributes",
+      "value": {
+        "position": {
+          "x": 420,
+          "y": 160,
+          "z": 1
+        }
+      },
+      "raw_attributes": {
+        "position": [
+          420,
+          160,
+          1
+        ]
+      }
+    },
+    {
+      "attr_id": "20000000-0000-4000-8000-000000000010",
+      "node_id": "00000000-0000-4000-8000-000000000010",
+      "attr_type": "node_attributes",
+      "value": {
+        "position": {
+          "x": 420,
+          "y": 240,
+          "z": 1
+        }
+      },
+      "raw_attributes": {
+        "position": [
+          420,
+          240,
+          1
+        ]
+      }
+    },
+    {
+      "attr_id": "20000000-0000-4000-8000-000000000011",
+      "node_id": "00000000-0000-4000-8000-000000000011",
+      "attr_type": "node_attributes",
+      "value": {
+        "position": {
+          "x": 220,
+          "y": 300,
+          "z": 1
+        },
+        "style": {
+          "backgroundColor": "#E8F0FE",
+          "color": "#174EA6",
+          "fontSize": 16,
+          "italic": true
+        },
+        "parentConnector": {
+          "width": 2,
+          "color": "#3366CC",
+          "arrow": "to"
+        }
+      },
+      "raw_attributes": {
+        "position": [
+          220,
+          300,
+          1
+        ],
+        "style": {
+          "backgroundColor": "#E8F0FE",
+          "color": "#174EA6",
+          "fontSize": 16,
+          "italic": true
+        },
+        "parentConnector": {
+          "width": 2,
+          "color": "#3366CC",
+          "arrow": "to"
+        }
+      }
+    },
+    {
+      "attr_id": "20000000-0000-4000-8000-000000000012",
+      "node_id": "00000000-0000-4000-8000-000000000012",
+      "attr_type": "node_attributes",
+      "value": {
+        "position": {
+          "x": 420,
+          "y": 300,
+          "z": 1
+        },
+        "collapsed": true
+      },
+      "raw_attributes": {
+        "position": [
+          420,
+          300,
+          1
+        ],
+        "collapsed": true
+      }
+    }
+  ],
+  "stickers": [
+    {
+      "sticker_id": "30000000-0000-4000-8000-000000000001",
+      "node_id": "00000000-0000-4000-8000-000000000003",
+      "emoji_code": "emoji:1F680",
+      "emoji_display": "🚀",
+      "category": "travel"
+    },
+    {
+      "sticker_id": "30000000-0000-4000-8000-000000000002",
+      "node_id": "00000000-0000-4000-8000-000000000005",
+      "emoji_code": "emoji:1F4CC",
+      "emoji_display": "📌",
+      "category": "office"
+    }
+  ],
+  "icons": [
+    {
+      "icon_id": "40000000-0000-4000-8000-000000000001",
+      "node_id": "00000000-0000-4000-8000-000000000006",
+      "url": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=",
+      "width": 16,
+      "height": 16,
+      "position": "center",
+      "mime_type": "image/png",
+      "base64_length": 92
+    }
+  ],
+  "links": [
+    {
+      "link_id": "50000000-0000-4000-8000-000000000001",
+      "map_id": "mapa-sintetico-completo",
+      "from_node_id": "00000000-0000-4000-8000-000000000002",
+      "to_node_id": "00000000-0000-4000-8000-000000000004",
+      "color": "#3366CC",
+      "line_style": "solid",
+      "arrow": "to",
+      "width": 2
+    }
+  ],
+  "externalRefs": [
+    {
+      "ref_id": "60000000-0000-4000-8000-000000000001",
+      "node_id": "00000000-0000-4000-8000-000000000006",
+      "url": "https://docs.example.com/guia-sintetica",
+      "ref_type": "web_page",
+      "label": "Guía sintética:"
+    },
+    {
+      "ref_id": "60000000-0000-4000-8000-000000000002",
+      "node_id": "00000000-0000-4000-8000-000000000007",
+      "url": "https://example.org/recursos-sinteticos",
+      "ref_type": "web_page",
+      "label": "Referencias externas:"
+    }
+  ],
+  "enums": [
+    {
+      "enum_id": "enum_sticker_categories_travel",
+      "category": "sticker_categories",
+      "code": "travel",
+      "label": "Travel"
+    },
+    {
+      "enum_id": "enum_sticker_categories_office",
+      "category": "sticker_categories",
+      "code": "office",
+      "label": "Office"
+    },
+    {
+      "enum_id": "enum_attr_types_position",
+      "category": "attr_types",
+      "code": "position",
+      "label": "Position"
+    },
+    {
+      "enum_id": "enum_attr_types_style",
+      "category": "attr_types",
+      "code": "style",
+      "label": "Style"
+    },
+    {
+      "enum_id": "enum_attr_types_collapsed",
+      "category": "attr_types",
+      "code": "collapsed",
+      "label": "Collapsed"
+    },
+    {
+      "enum_id": "enum_attr_types_shape",
+      "category": "attr_types",
+      "code": "shape",
+      "label": "Shape"
+    },
+    {
+      "enum_id": "enum_attr_types_borderStyle",
+      "category": "attr_types",
+      "code": "borderStyle",
+      "label": "Border Style"
+    },
+    {
+      "enum_id": "enum_attr_types_borderColor",
+      "category": "attr_types",
+      "code": "borderColor",
+      "label": "Border Color"
+    },
+    {
+      "enum_id": "enum_attr_types_borderWidth",
+      "category": "attr_types",
+      "code": "borderWidth",
+      "label": "Border Width"
+    },
+    {
+      "enum_id": "enum_attr_types_width",
+      "category": "attr_types",
+      "code": "width",
+      "label": "Width"
+    },
+    {
+      "enum_id": "enum_attr_types_height",
+      "category": "attr_types",
+      "code": "height",
+      "label": "Height"
+    },
+    {
+      "enum_id": "enum_attr_types_icon",
+      "category": "attr_types",
+      "code": "icon",
+      "label": "Icon"
+    },
+    {
+      "enum_id": "enum_attr_types_parentConnector",
+      "category": "attr_types",
+      "code": "parentConnector",
+      "label": "Parent Connector"
+    },
+    {
+      "enum_id": "enum_ref_types_web_page",
+      "category": "ref_types",
+      "code": "web_page",
+      "label": "Web page"
+    }
+  ],
+  "indexes": [
+    {
+      "index_id": "idx_all_nodes",
+      "name": "Todos los nodos",
+      "type": "select",
+      "query": {},
+      "description": "Todos los nodos del mapa"
+    },
+    {
+      "index_id": "idx_root_nodes",
+      "name": "Nodos raíz",
+      "type": "select",
+      "query": {
+        "depth": 0
+      },
+      "description": "Nodos raíz del mapa (depth=0)"
+    },
+    {
+      "index_id": "idx_leaf_nodes",
+      "name": "Nodos hoja",
+      "type": "select",
+      "query": {
+        "is_leaf": true
+      },
+      "description": "Nodos hoja (sin hijos)"
+    },
+    {
+      "index_id": "idx_parent_nodes",
+      "name": "Nodos padre",
+      "type": "select",
+      "query": {
+        "is_leaf": false
+      },
+      "description": "Nodos padre (con hijos)"
+    }
+  ]
+}

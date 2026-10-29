@@ -1,0 +1,25 @@
+{
+  "name": "mindmup-conversor",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Conversor de mapas MindMup a JSON-CMJN y HTML autocontenido.",
+  "license": "MIT",
+  "author": "Paginaviva",
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "npm run test:shared && npm run test:converter && npm run test:visualizer && npm run test:functions && npm run test:ui",
+    "test:shared": "node test/shared/test-config.js && node test/shared/test-session.js && node test/shared/test-zip.js && node test/shared/test-html-bundle.js",
+    "test:converter": "node test/converter/test-layers-1-4.js && node test/converter/test-layers-5-8.js && node test/converter/test-worker-units.js && node test/converter/test-cleanup.js",
+    "test:visualizer": "node test/visualizer/test-layers.js",
+    "test:functions": "node test/functions/test-login.js && node test/functions/test-session.js && node test/functions/test-config.js && node test/functions/test-session-guard.js && node test/functions/test-list.js && node test/functions/test-upload.js && node test/functions/test-result-endpoints.js && node test/functions/test-html-toolbar.js && node test/functions/test-download-html.js",
+    "test:ui": "node test/ui/test-static-shell.js",
+    "convert": "node scripts/convert.js",
+    "validate:config": "node scripts/validate-config.js",
+    "verify:cmjn": "node scripts/verify-cmjn-json.js",
+    "verify:equivalence": "node scripts/verify-equivalence.js",
+    "verify:html-equivalence": "node scripts/verify-html-equivalence.js"
+  }
+}

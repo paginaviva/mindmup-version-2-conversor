@@ -1,0 +1,6 @@
+# Solo para desarrollo local. No usar valores reales.
+INTERNAL_SHARED_SECRET=test-only
+ADMIN_PASSWORD_HASH=test-only
+ADMIN_PASSWORD_SALT=test-only
+ADMIN_PASSWORD_ITERATIONS=5000
+TURNSTILE_SECRET_KEY=test-only
