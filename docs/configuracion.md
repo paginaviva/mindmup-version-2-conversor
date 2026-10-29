@@ -1,10 +1,16 @@
-# Configuración
+# Configuración de MindMup 2 Conversor
 
-MindMup Conversor guarda la configuración operativa en dos documentos JSON dentro del almacenamiento clave-valor de Cloudflare. La carga no sustituye las claves ausentes por valores por defecto: si falta un binding, una clave o el tipo no coincide, se produce un error explícito que nombra el elemento que falla.
+MindMup 2 Conversor guarda la configuración operativa en dos documentos JSON dentro del almacenamiento clave-valor de Cloudflare. La carga no sustituye las claves ausentes por valores por defecto: si falta un binding, una clave o el tipo no coincide, se produce un error explícito que nombra el elemento que falla.
 
 La validación y la carga son manuales. El repositorio no incluye integración continua ni GitHub Actions.
 
 Para el despliegue completo, consulta [instalacion-publica.md](instalacion-publica.md) y [instalacion-login-r2.md](instalacion-login-r2.md).
+
+## Compatibilidad y versiones
+
+La compatibilidad de los archivos `.mup` se decide por el campo interno `formatVersion`, no por la versión comercial de MindMup. La plantilla acepta 3 y rechaza 2. `CONVERTER_VERSION` es la versión del proceso de conversión (`v7`) y la versión del paquete es `1.0.0`; ninguna de las dos es la versión del formato `.mup`.
+
+`MUP_FORMAT_VERSION` es la versión interna del formato que la capa 1 compara con `formatVersion`. No es la versión comercial de MindMup ni un selector para leer cualquier archivo de MindMup 2 por el nombre de la aplicación. El valor de referencia y el único que usa la plantilla es 3.
 
 ## 1. Los dos documentos
 
@@ -128,13 +134,15 @@ El documento tiene `schemaVersion` en la raíz y dos secciones obligatorias: `co
 | `HTTP_NOT_FOUND` | number | `404` | Código de recurso no encontrado. |
 | `HTTP_PAYLOAD_TOO_LARGE` | number | `413` | Código de archivo demasiado grande. |
 | `HTTP_INTERNAL_ERROR` | number | `500` | Código de error interno. |
-| `MUP_FORMAT_VERSION` | number | `3` | Versión de formato aceptada. |
+| `MUP_FORMAT_VERSION` | number | `3` | Versión interna del formato `.mup` que acepta la capa 1. No es la versión comercial de MindMup. |
 | `MUP_KEY_IDEAS` | string | `ideas` | Clave del árbol de nodos. |
 | `DEFAULT_STICKER_CATEGORY` | string | `unknown` | Categoría por defecto de las pegatinas. |
 | `DEFAULT_REF_TYPE` | string | `web_page` | Tipo por defecto de las referencias externas. |
 | `DEFAULT_LINK_RESOLUTION` | string | `unresolved` | Estado por defecto de los enlaces internos. |
 | `URL_REGEX_PATTERN` | string | Patrón de la plantilla | Expresión regular para detectar direcciones externas. |
 | `WORKER_URL` | string | `""` | Origen para construir la URL de descarga. Vacío usa el origen de la petición. |
+
+`MUP_FORMAT_VERSION` no identifica la aplicación MindMup 2 o MindMup 3. Si un archivo declara `formatVersion: 2`, la capa 1 lo rechaza con `Formato .mup no soportado. Se esperaba versión 3, se recibió 2.` El mensaje se refiere al formato interno, no a la versión comercial.
 
 Valor de referencia de `URL_REGEX_PATTERN`:
 

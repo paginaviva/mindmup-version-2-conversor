@@ -1,8 +1,8 @@
 {
-  "name": "mindmup-conversor",
+  "name": "mindmup-2-conversor",
   "version": "1.0.0",
   "private": true,
-  "description": "Conversor de mapas MindMup a JSON-CMJN y HTML autocontenido.",
+  "description": "MindMup 2 Conversor: recupera, convierte y conserva mapas históricos de MindMup 2 en JSON-CMJN y HTML.",
   "license": "MIT",
   "author": "Paginaviva",
   "type": "module",

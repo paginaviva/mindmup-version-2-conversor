@@ -1,6 +1,8 @@
-# Pruebas
+# Pruebas de MindMup 2 Conversor
 
-Las pruebas de MindMup Conversor se ejecutan a mano desde la raíz del repositorio. No hay integración continua ni GitHub Actions. Las suites usan datos sintéticos, no necesitan red y no crean recursos de Cloudflare.
+Las pruebas de MindMup 2 Conversor se ejecutan a mano desde la raíz del repositorio. No hay integración continua ni GitHub Actions. Las suites usan datos sintéticos, no necesitan red y no crean recursos de Cloudflare.
+
+La compatibilidad verificada por la suite se limita a archivos `.mup` con `formatVersion: 3` y al rechazo de `formatVersion: 2`. Las pruebas no demuestran compatibilidad universal con todos los archivos de MindMup 2 ni con todos los de MindMup 3.
 
 Este documento describe qué comprueba cada suite, cómo ejecutarla y cómo conservar una evidencia verificable. No declara resultados de ejecución: cada persona debe ejecutar los comandos y conservar su salida y su código de salida.
 
@@ -143,6 +145,14 @@ Los contratos no son copias byte a byte. Normalizan los valores dinámicos, como
 - Los dominios de ejemplo usan `example.com`, `example.org` o `example.test`. Las direcciones de red de prueba usan rangos de documentación.
 
 No añadas datos personales, nombres de clientes, identificadores reales, rutas absolutas ni direcciones privadas a las pruebas, a los fixtures o a los ejemplos.
+
+### 4.4. `synthetic-v2.mup` y el límite de la comprobación
+
+`test/converter/fixtures/synthetic-v2.mup` es un fixture sintético con `formatVersion: 2` y un árbol `ideas` mínimo. No reproduce un mapa real de MindMup 2 ni representa a todos los archivos de esa versión comercial.
+
+Su finalidad es comprobar el rechazo de `formatVersion: 2`. La prueba 1.2 de `test/converter/test-layers-1-4.js` llama a `parseMup` con `MUP_FORMAT_VERSION: 3` y espera el error `Formato .mup no soportado`. Que la prueba pase acredita que la capa 1 rechaza un valor distinto de 3 en ese fixture. No acredita que el conversor lea todos los mapas de MindMup 2, ni que todos los mapas de MindMup 2 sean incompatibles con MindMup 3.
+
+La suite no demuestra compatibilidad universal con todos los archivos de MindMup 2. Tampoco demuestra que todos los archivos de MindMup 2 usen `formatVersion: 2`. Solo cubre el comportamiento del código ante el valor 2 y el valor 3 en los datos de prueba.
 
 ## 5. Variante pública sin inicio de sesión
 
@@ -410,6 +420,7 @@ Las suites usan valores de prueba como `secret` o contraseñas sintéticas. Esos
 | Todos los mapas se omiten | Las salidas ya existen. | Usa otra carpeta de salida o elimina solo las salidas que quieras regenerar. |
 | No se generan las subcarpetas | Falta `--recursive`. | Añade `--recursive` a `convert.js`. |
 | No se genera HTML | Falta `--html` o se usó `convertir-local.js`. | Usa `convert.js` con `--html`; `convertir-local.js` nunca genera HTML. |
+| `Formato .mup no soportado. Se esperaba versión 3, se recibió <versión>.` | El archivo declara un `formatVersion` distinto de 3. | Comprueba el campo interno del `.mup`. El conversor no lee la versión comercial de MindMup y no admite otros valores. |
 | El visualizador imprime pruebas omitidas | Son las nueve comprobaciones de página pendientes de migrar. | No es un fallo. Consúltalas en la sección 8 y no las cuentes como superadas. |
 | El inicio de sesión falla después de cambiar PBKDF2 | El hash, la sal y las iteraciones no son coherentes. | Regenera los tres valores juntos con `--iterations 5000` y actualiza `ADMIN_PASSWORD_ITERATIONS`. |
 | `EACCES` al escribir | La carpeta de salida no tiene permisos de escritura. | Usa una carpeta escribible o corrige los permisos. |
@@ -429,6 +440,7 @@ Las suites usan valores de prueba como `secret` o contraseñas sintéticas. Esos
 - `maxConcurrent` no se aplica. La concurrencia se aproxima con una clave activa por dirección de red.
 - Los intentos inválidos consumen cuota. Los contadores se incrementan antes de validar el archivo, el tipo de contenido o Turnstile.
 - No se prueba la página de presentación de `site/`. La suite de interfaz cubre el shell de `app/`.
+- La compatibilidad con MindMup 2 no se ha verificado de forma universal. La suite usa datos con `formatVersion: 3` y un fixture con `formatVersion: 2`; no incluye una muestra representativa de archivos reales de MindMup 2 ni de MindMup 3.
 
 ## Documentación relacionada
 

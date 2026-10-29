@@ -1,6 +1,18 @@
-# Conversor local
+# Conversor local — MindMup 2 Conversor
 
-Convierte archivos `.mup` de MindMup versión 3 en JSON-CMJN y, si se indica, en un HTML autocontenido. Funciona con Node.js y el sistema de archivos, sin Cloudflare, sin Wrangler y sin dependencias npm.
+El conversor local de MindMup 2 Conversor convierte archivos `.mup` compatibles con `formatVersion: 3` en JSON-CMJN y, si se indica, en un HTML autocontenido. Funciona con Node.js y el sistema de archivos: no usa Cloudflare, Wrangler ni dependencias npm. Los resultados se guardan en el disco del usuario.
+
+## Compatibilidad de los archivos
+
+El conversor acepta archivos `.mup` compatibles con `formatVersion: 3`. La compatibilidad se decide por ese valor interno, no por la versión comercial de MindMup:
+
+- Acepta `.mup` con `formatVersion: 3` y un objeto `ideas` no vacío.
+- Rechaza los archivos con `formatVersion: 2` y cualquier otro valor distinto de 3.
+- No lee ni valida la versión comercial de MindMup (2 o 3).
+- No se ha podido demostrar que todos los archivos de MindMup 2 usen `formatVersion: 3`; comprueba el valor del archivo antes de asumir que se aceptará.
+- `v7` es la versión del conversor, no la de MindMup ni la del formato `.mup`.
+
+La [documentación oficial de MindMup](https://www.mindmup.com/) no documenta este valor interno. El proyecto no afirma compatibilidad universal con todos los mapas de MindMup 2 ni incompatibilidad universal con MindMup 3.
 
 La ejecución es manual. No hay integración continua ni GitHub Actions.
 
@@ -9,11 +21,11 @@ La ejecución es manual. No hay integración continua ni GitHub Actions.
 - Node.js 22 o superior. El requisito está declarado en `package.json`.
 - Ninguna dependencia npm que instalar. No ejecutes `npm install` para usar el conversor.
 - Ningún recurso de Cloudflare: ni cuenta, ni Workers, ni Pages, ni R2, ni almacenamiento clave-valor, ni Durable Objects.
-- Un archivo `.mup` exportado por MindMup con `formatVersion: 3` y un objeto `ideas` no vacío.
+- Un archivo `.mup` con `formatVersion: 3` y un objeto `ideas` no vacío. Comprueba el valor interno antes de convertirlo.
 - Permiso de lectura sobre la carpeta de entrada y de escritura sobre la carpeta de salida.
 - Los ejemplos se ejecutan desde la raíz del repositorio. Los scripts importan módulos de `src/`, así que no copies solo la carpeta `scripts/`.
 
-No se aplican los límites de las variantes web: tamaño mínimo o máximo, cuota por dirección de red, retención, sesiones ni catálogo. Esas comprobaciones pertenecen a Pages Functions.
+No se aplican los límites de las variantes web: tamaño mínimo o máximo, cuota por dirección de red, retención, sesiones ni catálogo. La retención de 24 horas corresponde a la variante pública. Esas comprobaciones pertenecen a Pages Functions.
 
 ## 2. Herramientas
 
@@ -260,7 +272,7 @@ Los datos de los ejemplos son sintéticos. Consulta [examples/README.md](../exam
 | `Faltan las carpetas de entrada o salida. Usa --input/--output, MUP_INPUT_DIR/MUP_OUTPUT_DIR o config.local.json.` | No se indicó la entrada o la salida. | Usa las opciones de `convert.js`, las variables de entorno o `config.local.json`. En `convertir-local.js`, usa variables de entorno o configuración: no acepta opciones. |
 | `No se pudo leer la configuración "<ruta>": ...` | El archivo de configuración no contiene JSON válido. | Corrige el JSON o usa otro archivo. |
 | `Opción desconocida: <opción>` | Se escribió una opción que `convert.js` no reconoce. | Consulta `node scripts/convert.js --help`. |
-| `Formato .mup no soportado. Se esperaba versión 3, se recibió <versión>.` | El mapa no es de MindMup versión 3. | Exporta de nuevo el mapa con la versión 3. |
+| `Formato .mup no soportado. Se esperaba versión 3, se recibió <versión>.` | El archivo no tiene `formatVersion: 3`. | Comprueba el valor interno `formatVersion` del archivo. El conversor solo admite 3; no interpreta la versión comercial de MindMup. |
 | `El archivo .mup no contiene un objeto ideas válido o está vacío.` | Falta el árbol `ideas` o no tiene nodos. | Corrige el archivo o expórtalo de nuevo. |
 | Error de JSON al leer el `.mup` | El archivo no es JSON válido o está dañado. | Expórtalo de nuevo desde MindMup. |
 | `ENOENT` al recorrer la carpeta de entrada | La carpeta de entrada no existe o la ruta es incorrecta. | Revisa la ruta y ejecuta desde la raíz del repositorio. |

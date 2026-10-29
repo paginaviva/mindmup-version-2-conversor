@@ -1,6 +1,18 @@
-# Instalación de la variante con inicio de sesión y R2
+# Instalación privada con inicio de sesión y R2 de MindMup 2 Conversor
 
-Esta guía describe cómo instalar la variante con inicio de sesión, catálogo y descarga de JSON en una cuenta propia de Cloudflare. Es una variante distribuible: no se despliega en la cuenta pública y no comparte recursos con otras instalaciones.
+Esta guía describe cómo instalar MindMup 2 Conversor en la variante con inicio de sesión, catálogo y descarga de JSON en una cuenta propia de Cloudflare. Es una variante distribuible: no se despliega en la cuenta pública y no comparte recursos con otras instalaciones. A diferencia de la variante pública, incluye autenticación, catálogo y almacenamiento en `output/`; el conversor local no usa Cloudflare y escribe en el disco del usuario.
+
+## Compatibilidad de los archivos
+
+El conversor acepta archivos `.mup` compatibles con `formatVersion: 3`. La compatibilidad se decide por ese valor interno, no por la versión comercial de MindMup:
+
+- Acepta `.mup` con `formatVersion: 3` y un objeto `ideas` no vacío.
+- Rechaza los archivos con `formatVersion: 2` y cualquier otro valor distinto de 3.
+- No lee ni valida la versión comercial de MindMup (2 o 3).
+- No se ha podido demostrar que todos los archivos de MindMup 2 usen `formatVersion: 3`; comprueba el valor del archivo antes de asumir que se aceptará.
+- `v7` es la versión del conversor, no la de MindMup ni la del formato `.mup`.
+
+El proyecto no afirma compatibilidad universal con todos los mapas de MindMup 2 ni incompatibilidad universal con MindMup 3.
 
 Los valores entre `{{...}}` son marcadores que debes sustituir por los de tu entorno. No copies secretos ni identificadores reales en el repositorio.
 
@@ -12,7 +24,7 @@ La variante incluye:
 - Sesiones almacenadas en el servidor.
 - Catálogo de resultados en R2.
 - Descarga de JSON y de HTML.
-- Límites de uso y retención configurables.
+- Límites de uso configurables; el catálogo no aplica retención automática.
 - Despliegue manual con Wrangler 4.
 
 No incluye usuarios, sesiones, credenciales, mapas ni datos de la instalación original. El catálogo queda vacío por defecto.
@@ -121,7 +133,7 @@ Valores de referencia de la plantilla:
 | `catalogEnabled` | `true` | Activa `/api/list` |
 | `loginUser` | `{{LOGIN_USER}}` | Usuario exacto del formulario |
 | `sessionTtlMinutes` | `1440` | Vigencia de la sesión: 24 horas |
-| `anonymousRetentionHours` | `24` | Retención de los objetos temporales |
+| `anonymousRetentionHours` | `24` | Solo modo anónimo; no se aplica a `output/` en esta variante |
 | `minUploadBytes` | `1024` | Tamaño mínimo: 1 KB |
 | `maxUploadBytes` | `16777216` | Tamaño máximo: 16 MB |
 | `rateLimit.windowSeconds` | `600` | Ventana de 10 minutos |
@@ -136,7 +148,7 @@ Valores de referencia de la plantilla:
 | `htmlCacheSeconds` | `0` | Sin caché de HTML |
 | `turnstileEnabled` | `false` | Opcional; solo afecta al modo anónimo |
 
-La retención anónima se ancla al JSON temporal de salida, no al instante exacto de la subida. En modo catálogo, `output/` no caduca ni se borra automáticamente.
+La retención de 24 horas corresponde al modo anónimo de la variante pública y se ancla al JSON temporal de salida, no al instante exacto de la subida. Esta guía configura el modo catálogo: `output/` no caduca ni se borra automáticamente.
 
 `conversionTimeoutSeconds` no aborta la conversión. `maxConcurrent` no se aplica. En el modo anónimo, la concurrencia se aproxima con una clave activa por dirección de red.
 
@@ -238,19 +250,17 @@ La sesión se guarda en el servidor, en `CONFIG_KV`, con la clave `session:<iden
 |---|---|---|
 | `input/{uuid}.mup` | Original subido | Se borra al terminar la conversión, con éxito o error |
 | `output/{uuid}.json` | JSON-CMJN publicado | No se borra automáticamente |
-| `temp/{uuid}.mup` | Original anónimo | Se borra al convertir |
-| `temp/{uuid}/output.json` | Salida anónima temporal | Retención de 24 horas y limpieza horaria |
 
-La Function comprueba la fecha antes de servir un objeto temporal y responde `404` si ha caducado, aunque la limpieza física todavía no se haya ejecutado.
+Las rutas `temp/` y la retención de 24 horas pertenecen al modo anónimo; la variante pública las usa con esa política. Esta guía configura `loginEnabled: true` y `catalogEnabled: true`; no aplica esa retención a `output/` ni al conversor local.
 
 - El original se borra al convertir. Lo que no se borra automáticamente es `output/`.
 - El HTML no se almacena: se genera a demanda.
 - El catálogo lee los objetos de `output/` y muestra título, archivo de origen, fecha de conversión, número de nodos, grupo y versión.
 - Las subidas nuevas no tienen metadatos de grupo. El catálogo muestra `Sin grupo` y `group_path` vacío hasta que se asignen metadatos al objeto.
-- La versión del conversor es `v7`.
+- La versión del conversor es `v7`; no es la versión de MindMup ni la del formato `.mup`.
 - El catálogo queda vacío por defecto en una instalación nueva.
 - La búsqueda, el filtro por grupo y la ordenación se resuelven en el cliente.
-- La descarga de JSON exige sesión y solo existe en esta variante.
+- La descarga de JSON por la interfaz web exige sesión y solo existe en esta variante; el conversor local escribe JSON en el disco del usuario.
 
 El catálogo no se rellena con datos de ejemplo. Si necesitas retención para `output/`, gestiónala de forma explícita; no hay borrado automático.
 
@@ -576,7 +586,7 @@ Deben aparecer `ADMIN_PASSWORD_HASH`, `ADMIN_PASSWORD_SALT`, `ADMIN_PASSWORD_ITE
 - No se usa GitHub Actions ni integración continua. El despliegue es manual con Wrangler 4.
 - `conversionTimeoutSeconds` no aborta la conversión. `maxConcurrent` no se aplica; en el modo anónimo, la concurrencia se aproxima con una clave activa.
 - Desactivar el inicio de sesión no invalida proactivamente las sesiones. Se borran al consultar `/api/session` o al caducar.
-- La retención anónima se ancla al JSON temporal de salida. `output/` no se borra automáticamente.
+- La retención de 24 horas corresponde al modo anónimo de la variante pública. En esta variante, `output/` no se borra automáticamente.
 - No compartas R2, almacenamiento clave-valor, Workers, Pages ni secretos entre instalaciones.
 
 ## 10. Resolución de problemas

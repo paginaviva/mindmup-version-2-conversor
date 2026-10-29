@@ -1,6 +1,8 @@
-# Seguridad
+# Seguridad de MindMup 2 Conversor
 
-Esta guía reúne las medidas que protegen los secretos, las sesiones, los límites de uso, la retención y el HTML generado. Está pensada para las dos variantes web de MindMup Conversor. El conversor local no usa Cloudflare ni secretos de ejecución.
+Esta guía reúne las medidas que protegen los secretos, las sesiones, los límites de uso, la retención y el HTML generado. Está pensada para las dos variantes web de MindMup 2 Conversor. El conversor local no usa Cloudflare ni secretos de ejecución.
+
+El conversor solo lee archivos `.mup` compatibles con `formatVersion: 3` y no edita mapas en MindMup. La versión comercial de la aplicación no interviene en la validación.
 
 Los valores entre `{{...}}` son marcadores que debes sustituir por los de tu entorno. No copies secretos, identificadores de cuenta, nombres reales ni direcciones del despliegue privado en este repositorio.
 
@@ -135,9 +137,16 @@ Límite diario de conversiones alcanzado.
 
 En modo anónimo, la retención se ancla al JSON temporal de salida: `temp/{uuid}/output.json`. No se ancla al instante exacto de la subida.
 
-Antes de servir `/html/{uuid}`, la Function consulta la fecha del objeto temporal. Si ha caducado, lo elimina y responde `404` con `Mapa no encontrado`, aunque la limpieza física todavía no se haya ejecutado.
+### 5.1. Caducidad de acceso y eliminación física
 
-La tarea programada del Worker de conversión se ejecuta cada hora y elimina los objetos temporales caducados. Una política de ciclo de vida de R2 puede actuar como red de seguridad, pero no sustituye la comprobación de la Function.
+| Concepto | Cuándo ocurre | Efecto |
+|---|---|---|
+| Caducidad de acceso | Cuando `Date.now()` alcanza `uploaded + anonymousRetentionHours`. | Las rutas que sirven la vista HTML responden `404` con `Mapa no encontrado`. La Function intenta borrar el objeto en ese momento. |
+| Eliminación física | En la tarea programada del Worker de conversión, cada hora, o cuando la Function borra un objeto caducado. | El objeto temporal se intenta eliminar de R2. Puede ocurrir después de la caducidad de acceso. |
+
+La caducidad de acceso no depende de que la eliminación física ya se haya ejecutado. Entre ambos momentos, el objeto puede seguir existiendo en R2, pero las rutas de la aplicación ya no lo sirven. La tarea programada del Worker de conversión se ejecuta cada hora y elimina los objetos temporales caducados; una política de ciclo de vida de R2 puede actuar como red de seguridad, pero no sustituye la comprobación de la Function.
+
+Antes de servir `/html/{uuid}` y `/api/download-html/{uuid}`, la Function consulta la fecha del objeto temporal. Si ha caducado, lo elimina y responde `404` con `Mapa no encontrado`, aunque la limpieza física todavía no se haya ejecutado.
 
 El campo `expiresAt` de la respuesta de subida se calcula al responder a la subida y es una estimación. La comprobación real del servidor usa la fecha del objeto temporal de salida.
 

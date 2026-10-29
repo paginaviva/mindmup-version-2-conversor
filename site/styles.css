@@ -99,6 +99,17 @@ button:focus-visible {
   outline-offset: 3px;
 }
 
+.icon {
+  width: 1.1em;
+  height: 1.1em;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
 code {
   font-family: var(--font-mono);
   font-size: 0.88em;
@@ -243,6 +254,7 @@ main:focus {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 0.45rem;
   min-height: 44px;
   margin-left: auto;
   padding: 0.55rem 0.9rem;
@@ -263,7 +275,7 @@ main:focus {
   color: var(--color-accent-hover);
 }
 
-@media (min-width: 56em) {
+@media (min-width: 64em) {
   .site-header__inner {
     padding-block: 1rem;
   }
@@ -285,6 +297,7 @@ main:focus {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 0.55rem;
   min-height: 48px;
   padding: 0.72rem 1.15rem;
   border: 1px solid transparent;
@@ -324,6 +337,7 @@ main:focus {
 .text-link {
   display: inline-flex;
   align-items: center;
+  gap: 0.5rem;
   min-height: 44px;
   font-weight: 700;
 }
@@ -526,6 +540,11 @@ main:focus {
   border-block: 1px solid var(--color-border);
 }
 
+.hero + .section--surface,
+.section--surface + .section--surface {
+  border-top: 0;
+}
+
 .section--license {
   border-bottom: 0;
 }
@@ -577,6 +596,10 @@ main:focus {
   border-radius: var(--radius);
   background-color: var(--color-surface);
   box-shadow: var(--shadow);
+}
+
+.panel--muted {
+  background-color: var(--color-surface-muted);
 }
 
 .panel__label {
@@ -769,6 +792,120 @@ main:focus {
   font-weight: 700;
 }
 
+.tech-block {
+  margin-top: 1.5rem;
+}
+
+.tech-block h3 {
+  font-size: 1.1rem;
+}
+
+.table-wrap {
+  margin-top: 0.85rem;
+  overflow-x: auto;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-surface);
+  -webkit-overflow-scrolling: touch;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.data-table th,
+.data-table td {
+  padding: 0.78rem 0.9rem;
+  border-top: 1px solid var(--color-border);
+  text-align: left;
+  vertical-align: top;
+}
+
+.data-table thead th {
+  border-top: 0;
+  background-color: var(--color-surface-muted);
+  color: var(--color-text);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.data-table tbody th {
+  color: var(--color-text);
+  font-weight: 700;
+}
+
+.data-table td {
+  color: var(--color-muted);
+}
+
+.data-table code {
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 47.99em) {
+  .data-table,
+  .data-table tbody,
+  .data-table tr,
+  .data-table th,
+  .data-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .data-table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .data-table tr {
+    padding: 0.85rem 0;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .data-table tbody tr:first-child {
+    border-top: 0;
+  }
+
+  .data-table th,
+  .data-table td {
+    padding: 0.2rem 0.9rem;
+    border-top: 0;
+  }
+
+  .data-table tbody th {
+    margin-bottom: 0.25rem;
+    font-size: 0.95rem;
+  }
+
+  .data-table td {
+    font-size: 0.88rem;
+  }
+
+  .data-table td + td {
+    margin-top: 0.35rem;
+  }
+
+  .data-table td[data-label]::before {
+    content: attr(data-label);
+    display: block;
+    margin-bottom: 0.1rem;
+    color: var(--color-muted);
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+}
+
 @media (min-width: 48em) {
   .steps {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -906,6 +1043,17 @@ main:focus {
   text-transform: uppercase;
 }
 
+.variant-card__retention {
+  margin-top: 0.95rem;
+  padding: 0.65rem 0.75rem;
+  border-left: 3px solid var(--color-accent);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  background-color: var(--color-accent-soft);
+  color: var(--color-text);
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+
 .variant-card__cta {
   margin-top: auto;
   padding-top: 1.15rem;
@@ -966,6 +1114,9 @@ main:focus {
 }
 
 .resource-card__tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
   color: var(--color-accent);
   font-size: 0.7rem;
   font-weight: 800;
@@ -1095,6 +1246,7 @@ main:focus {
 .footer-nav a {
   display: inline-flex;
   align-items: center;
+  gap: 0.4rem;
   min-height: 44px;
   color: var(--color-muted);
   font-size: 0.86rem;

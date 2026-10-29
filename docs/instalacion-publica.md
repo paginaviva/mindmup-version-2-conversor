@@ -1,6 +1,20 @@
-# Instalación pública
+# Instalación pública de MindMup 2 Conversor
 
-Guía para desplegar la variante pública de MindMup Conversor en una cuenta de Cloudflare propia. La variante pública no tiene inicio de sesión ni catálogo: recibe un archivo `.mup`, genera un HTML autocontenido y lo ofrece para previsualizar y descargar en ZIP. El JSON se genera internamente para construir el HTML, pero no se expone al usuario.
+Guía para desplegar la variante pública de MindMup 2 Conversor en una cuenta de Cloudflare propia. La variante pública no tiene inicio de sesión ni catálogo: recibe un archivo `.mup`, genera un HTML autocontenido y lo ofrece para previsualizar y descargar en ZIP. El JSON se genera internamente para construir el HTML, pero no se expone al usuario.
+
+Esta variante es distinta de la instalación con inicio de sesión y R2 y del conversor local: no incluye autenticación ni catálogo, expone solo HTML y ZIP, y aplica una retención de 24 horas. El conversor local no usa Cloudflare y guarda los archivos en el disco del usuario.
+
+## Compatibilidad de los archivos
+
+El conversor acepta archivos `.mup` compatibles con `formatVersion: 3`. La compatibilidad se decide por ese valor interno, no por la versión comercial de MindMup:
+
+- Acepta `.mup` con `formatVersion: 3` y un objeto `ideas` no vacío.
+- Rechaza los archivos con `formatVersion: 2` y cualquier otro valor distinto de 3.
+- No lee ni valida la versión comercial de MindMup (2 o 3).
+- No se ha podido demostrar que todos los archivos de MindMup 2 usen `formatVersion: 3`; comprueba el valor del archivo antes de asumir que se aceptará.
+- `v7` es la versión del conversor, no la de MindMup ni la del formato `.mup`.
+
+La [documentación oficial de MindMup](https://www.mindmup.com/) no documenta este valor interno. El proyecto no afirma compatibilidad universal con todos los mapas de MindMup 2 ni incompatibilidad universal con MindMup 3.
 
 El despliegue es manual, con Wrangler 4. No se usa GitHub Actions ni integración continua.
 
@@ -353,7 +367,7 @@ curl -sS -o /dev/null -w "%{http_code}\n" "$BASE_URL/api/list"
 |---|---|---|
 | Tamaño mínimo | 1 KB (1024 bytes) | Un archivo menor responde `400`. |
 | Tamaño máximo | 16 MB (16777216 bytes) | Un archivo mayor responde `413`. |
-| Retención | 24 horas | Se comprueba contra la fecha del JSON temporal de salida. |
+| Retención de esta variante | 24 horas | Se comprueba contra la fecha del JSON temporal de salida. |
 | Subidas por ventana | 2 cada 10 minutos | La tercera subida dentro de la ventana responde `429`. |
 | Subidas por día | 10 | Al superar el límite responde `429` con `Retry-After`. |
 | Conversión activa | 1 por dirección de red | Se aproxima con una clave activa por dirección. |
@@ -382,7 +396,7 @@ Matices que conviene conocer antes de operar:
 | `429 Ya hay una conversión en curso` | Existe una clave activa para la dirección de red. | Espera el `Retry-After` indicado, como máximo `conversionTimeoutSeconds`. |
 | `429 Demasiadas conversiones. Inténtalo más tarde.` | Se superaron 2 subidas en 10 minutos. | Espera a que expire la ventana. |
 | `429 Límite diario de conversiones alcanzado.` | Se superaron 10 subidas en 24 horas. | Espera a que expire el contador diario. |
-| `400 El archivo debe tener extensión .mup` | El archivo no tiene la extensión correcta. | Usa un `.mup` exportado por MindMup. |
+| `400 El archivo debe tener extensión .mup` | El archivo no tiene la extensión correcta. | Usa un archivo con extensión `.mup`; comprueba además que su `formatVersion` sea 3. |
 | `400 El archivo está vacío o es demasiado pequeño (mínimo 1 KB)` | El archivo mide menos de 1024 bytes. | Usa un mapa con contenido suficiente. |
 | `400 El archivo no contiene un JSON válido` | El `.mup` no es JSON o está dañado. | Expórtalo de nuevo desde MindMup. |
 | `403 Verificación antiabuso fallida` | Turnstile está activo y falta el token o no es válido. | Revisa la clave pública y la secreta; el intento ya consumió cuota. |
@@ -401,6 +415,7 @@ Los detalles técnicos se registran en los registros estructurados del Worker o 
 - No guardes secretos, identificadores de cuenta ni archivos `.local` en Git. `.gitignore` ya excluye `*.local.*`, `config.local.json`, `config.variables.local.json`, `.dev.vars` y `wrangler.jsonc`.
 - No conectes el proyecto de Pages a una rama de Git ni añadas flujos de GitHub Actions. El despliegue es manual.
 - El original `.mup` se elimina al terminar la conversión. El JSON temporal se conserva hasta que caduca; la tarea programada horaria elimina los objetos caducados y la Function también los borra al detectar la caducidad.
+- La retención de 24 horas y la caducidad de URL corresponden a esta variante pública. No se aplican a la instalación con inicio de sesión y R2 ni al conversor local.
 - El HTML no se almacena: se genera a demanda. El ZIP se construye en cada descarga.
 - No hay catálogo, campaña ni `staging/` en esta variante. No busques datos publicados en `output/`: las conversiones anónimas usan `temp/`.
 - Los límites se aplican por dirección de red. Varios usuarios detrás de la misma red pueden compartir cuota; es el comportamiento esperado.

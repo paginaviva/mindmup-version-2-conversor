@@ -1,8 +1,25 @@
-# Arquitectura
+# Arquitectura de MindMup 2 Conversor
 
-MindMup Conversor convierte mapas MindMup versión 3 (`.mup`) en JSON-CMJN normalizado de 10 colecciones y en HTML autocontenido. La misma base de código se usa en tres formas: la variante pública sin inicio de sesión, la variante con inicio de sesión y R2, y el conversor local.
+MindMup 2 Conversor convierte archivos `.mup` compatibles con `formatVersion: 3` en JSON-CMJN normalizado de 10 colecciones y en HTML autocontenido. La compatibilidad se decide por el valor interno `formatVersion`, no por la versión comercial de MindMup. El conversor solo lee el archivo y genera una copia JSON y HTML; no abre, edita ni guarda mapas en MindMup.
 
-Esta página describe los componentes, los flujos, las rutas y las decisiones que explican el comportamiento observable. Las medidas de protección se detallan en [Seguridad](seguridad.md).
+La misma base de código se usa en tres formas: la variante pública sin inicio de sesión, la variante con inicio de sesión y R2, y el conversor local. Esta página describe los componentes, los flujos, las rutas y las decisiones que explican el comportamiento observable. Las medidas de protección se detallan en [Seguridad](seguridad.md).
+
+## Compatibilidad y versiones
+
+La compatibilidad técnica no depende del nombre comercial de la aplicación. Depende del campo interno `formatVersion` del archivo `.mup`:
+
+| Concepto | Qué es | Valor o uso |
+|---|---|---|
+| Versión comercial de MindMup | MindMup 2 o MindMup 3 | El conversor no la lee ni la valida. |
+| `formatVersion` del `.mup` | Versión interna del formato de archivo. | El conversor acepta 3 y rechaza 2. Cualquier otro valor tampoco se admite. |
+| `CONVERTER_VERSION` | Versión del proceso de conversión del proyecto. | `v7`. |
+| Versión del paquete | Versión del repositorio. | `1.0.0`. |
+
+Un archivo exportado desde MindMup 2 solo se procesa si declara `formatVersion: 3`. El conversor no deduce la versión comercial ni la convierte: inspecciona el valor interno y, si no es 3, detiene la conversión con un error. Lo mismo se aplica a un archivo exportado desde MindMup 3.
+
+La documentación oficial de MindMup no documenta el valor interno `formatVersion`. Por eso no se puede afirmar que todos los archivos de MindMup 2 usen `formatVersion: 3`, ni que todos los de MindMup 3 usen otro valor. La comprobación de la capa 1 y el fixture `synthetic-v2.mup` acreditan el rechazo de 2, no una compatibilidad universal con todos los archivos de MindMup 2. Consulta [Pruebas](pruebas.md) para el alcance exacto de la suite.
+
+`v7` es la versión del proceso de conversión, no la versión de MindMup ni la del formato `.mup`. La versión del paquete (`1.0.0`) identifica el repositorio y tampoco es la versión del formato.
 
 ## 1. Componentes
 
@@ -181,7 +198,7 @@ Los marcadores no son valores reales. `format_version` es 3. `source_file`, `con
 - `enums` genera el vocabulario controlado de `sticker_categories`, `attr_types` y `ref_types`.
 - `indexes` contiene cuatro consultas base: todos los nodos, nodos raíz, nodos hoja y nodos padre.
 
-La versión del conversor es `v7`. Se guarda en los metadatos personalizados del objeto de R2, no como una clave adicional del JSON. El catálogo la muestra con el valor `v7` cuando el objeto no tiene otro valor.
+La versión del proceso de conversión es `v7` (`CONVERTER_VERSION`). Se guarda en los metadatos personalizados del objeto de R2, no como una clave adicional del JSON. El catálogo la muestra con el valor `v7` cuando el objeto no tiene otro valor. No es la versión de MindMup ni la del formato `.mup`.
 
 ## 7. Capas del conversor y del visualizador
 
@@ -189,7 +206,7 @@ La versión del conversor es `v7`. Se guarda en los metadatos personalizados del
 
 | Capa | Qué hace |
 |---|---|
-| 1. Lectura | Interpreta el `.mup`, exige `formatVersion: 3` y un objeto `ideas` no vacío, y extrae los metadatos del mapa. |
+| 1. Lectura | Interpreta el `.mup`, exige que `formatVersion` coincida con `MUP_FORMAT_VERSION` (3) y que `ideas` sea un objeto no vacío, y extrae los metadatos del mapa. |
 | 2. Aplanado | Recorre el árbol en orden previo en profundidad y crea un nodo por idea con `parent_id`, `depth`, `path`, `sibling_order`, `original_id` y `is_leaf`. |
 | 3. Notas | Extrae las notas y sus datos asociados. |
 | 4. Atributos | Separa estilos, posiciones y atributos del nodo. |
@@ -228,7 +245,7 @@ Las plantillas de clave viven en `app-variables`: `R2_TEMP_INPUT_PATH_TEMPLATE`,
 
 - El original se elimina al convertir, tanto en modo anónimo como en modo catálogo, con éxito o error. Si el Worker no puede despertar al Durable Object, también elimina el original que acababa de guardar.
 - El HTML no se almacena. Se genera a demanda en cada vista y en cada descarga del ZIP.
-- La retención anónima se comprueba con `head` sobre el JSON temporal de salida. Si el objeto ha caducado, la Function lo elimina y responde `404`. `/api/status` solo consulta el estado; la comprobación de retención se hace en `/html` y en `/api/download-html`.
+- La retención anónima se comprueba con `head` sobre el JSON temporal de salida. Si el objeto ha caducado, la Function lo elimina y responde `404`. `/api/status` solo consulta el estado; la comprobación de retención se hace en `/html` y en `/api/download-html`. La caducidad de acceso y la eliminación física no son simultáneas: la tarea programada borra los objetos caducados cada hora y el objeto puede seguir existiendo hasta esa ejecución.
 - La tarea programada del Worker de conversión recorre el prefijo temporal y elimina los objetos más antiguos que la retención. Una política de ciclo de vida de R2 puede añadirse como red de seguridad, pero no sustituye la comprobación de la Function.
 - `output/` no se borra automáticamente. En una instalación con catálogo, su crecimiento debe gestionarse con una retención explícita o una política de ciclo de vida.
 - `/api/list` lee R2 directamente, pagina de 1000 en 1000 y lee cada JSON para construir el listado. Un objeto dañado se omite sin detener el resto.
@@ -278,8 +295,11 @@ La distribución pública no incluye código de campaña ni `staging/`. Solo exi
 
 ## Documentación relacionada
 
+- [Configuración](configuracion.md)
 - [Seguridad](seguridad.md)
+- [Pruebas](pruebas.md)
 - [Instalación pública](instalacion-publica.md)
 - [Instalación con inicio de sesión y R2](instalacion-login-r2.md)
+- [Conversor local](conversor-local.md)
 - [README del proyecto](../README.md)
 - [Licencias de terceros](../THIRD_PARTY_LICENSES.md)
